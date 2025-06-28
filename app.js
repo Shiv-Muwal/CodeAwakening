@@ -17,11 +17,23 @@ dotenv.config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
+    origin: function (origin, callback) {
+      const allowedOrigins = [
+        process.env.PORTFOLIO_URL,
+        process.env.DASHBOARD_URL,
+        "http://localhost:3000", // for local dev
+      ];
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed from this origin: " + origin));
+      }
+    },
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
+
 
 app.use(cookieParser());
 app.use(express.json());
