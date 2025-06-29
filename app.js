@@ -33,6 +33,7 @@ app.use(
     credentials: true,
   })
 );
+app.options("*", cors()); // Pre-flight requests for all routes
 
 
 app.use(cookieParser());
