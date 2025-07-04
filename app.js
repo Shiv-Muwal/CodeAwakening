@@ -1,16 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import fileUpload from "express-fileupload";
 import cors from "cors";
-import { dbConnection } from "./database/dbConnection.js";
+import fileUpload from "express-fileupload";
+import dbConnection from './database/dbConnection.js'
 import { errorMiddleware } from "./middlewares/error.js";
-import userRouter from "./routes/userRouter.js";
-import timelineRouter from "./routes/timelineRouter.js";
-import messageRouter from "./routes/messageRouter.js";
-import skillRouter from "./routes/skillRouter.js";
-import softwareApplicationRouter from "./routes/softwareApplicationRouter.js";
-import projectRouter from "./routes/projectRouter.js";
+import userRouter from "./routes/userRoutes.js";
+import timelineRouter from "./routes/timelineRoutes.js";
+import messageRouter from "./routes/messageRoutes.js";
+import skillRouter from "./routes/skillRoutes.js";
+import softwareApplicationRouter from "./routes/softwareApplicationRoutes.js";
+import projectRouter from "./routes/projectRoutes.js";
 
 const app = express();
 dotenv.config({ path: "./config/config.env" });
