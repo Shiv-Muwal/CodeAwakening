@@ -15,10 +15,22 @@ import projectRouter from "./routes/projectRoutes.js";
 const app = express();
 dotenv.config({ path: "./config/config.env" });
 
+// Allowed origins for CORS
+const allowedOrigins = [
+  "https://codeawakening-dashboard-px5yl0h4g-shiv-468s-projects.vercel.app",
+  "https://codeawakening-dashboard.vercel.app",
+];
+
+// CORS middleware
 app.use(
   cors({
-    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
