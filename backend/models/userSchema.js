@@ -86,22 +86,25 @@ userSchema.methods.generateJsonWebToken = function () {
     throw new Error("JWT_SECRET_KEY is not defined in environment variables");
   }
 
+  // Fixed expiration handling with proper validation
+  const expiresIn = process.env.JWT_EXPIRES || "1d"; // Default to 1 day
+
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXPIRES , // Default value
+    expiresIn // Use valid string format
   });
 };
 
 userSchema.methods.getResetPasswordToken = function () {
-  //Generating Token
+  // Generate crypto token
   const resetToken = crypto.randomBytes(20).toString("hex");
 
-  //Hashing and Adding Reset Password Token To UserSchema
+  // Hash token
   this.resetPasswordToken = crypto
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
 
-  //Setting Reset Password Token Expiry Time
+  // Set expiration (15 minutes)
   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
 
   return resetToken;
