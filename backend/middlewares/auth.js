@@ -4,7 +4,9 @@ import ErrorHandler from "./error.js";
 import jwt from "jsonwebtoken";
 
 export const isAuthenticated = catchAsyncErrors(async (req, res, next) => {
-  const { token } = req.cookies;
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
+  expiresIn: process.env.JWT_EXPIRE || "7d",
+});
   if (!token) {
     return next(new ErrorHandler("Authentication required", 401));
   }
