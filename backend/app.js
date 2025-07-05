@@ -15,25 +15,13 @@ import projectRouter from "./routes/projectRoutes.js";
 const app = express();
 dotenv.config({ path: "./config/config.env" });
 
-const allowedOrigins = [
-  process.env.PORTFOLIO_URL,
-  process.env.DASHBOARD_URL,
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
+    origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
     methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
   })
 );
-
 
 app.use(cookieParser());
 app.use(express.json());
