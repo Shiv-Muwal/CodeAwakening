@@ -35,7 +35,8 @@ app.use(
 );
 
 // Additional OPTIONS handler for any missed preflight requests
-app.options('*', cors());
+// Express v5 requires named wildcards - changed from app.options('*', cors()) 
+app.options('/*catchall', cors());
 
 app.use(cookieParser());
 app.use(express.json());
