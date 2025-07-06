@@ -53,38 +53,30 @@ const messageSlice = createSlice({
   },
 });
 
+
 export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
-    const response = await axios.get(
-      "https://codeawakening.onrender.com/api/v1/message/getall",
-      { withCredentials: true }
-    );
-    dispatch(
-      messageSlice.actions.getAllMessagesSuccess(response.data.messages)
-    );
-    dispatch(messageSlice.actions.clearAllErrors());
+    const { data } = await api.get("/message/getall");
+    dispatch(messageSlice.actions.getAllMessagesSuccess(data.messages));
   } catch (error) {
     dispatch(
-      messageSlice.actions.getAllMessagesFailed(error.response.data.message)
+      messageSlice.actions.getAllMessagesFailed(
+        error?.response?.data?.message || "Unauthorized"
+      )
     );
   }
 };
-
 export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
-    const response = await axios.delete(
-      `https://codeawakening.onrender.com/api/v1/message/delete/${id}`,
-      {
-        withCredentials: true,
-      }
-    );
-    dispatch(messageSlice.actions.deleteMessageSuccess(response.data.message));
-    dispatch(messageSlice.actions.clearAllErrors());
+    const { data } = await api.delete(`/message/delete/${id}`);
+    dispatch(messageSlice.actions.deleteMessageSuccess(data.message));
   } catch (error) {
     dispatch(
-      messageSlice.actions.deleteMessageFailed(error.response.data.message)
+      messageSlice.actions.deleteMessageFailed(
+        error?.response?.data?.message || "Unauthorized"
+      )
     );
   }
 };
@@ -96,5 +88,4 @@ export const clearAllMessageErrors = () => (dispatch) => {
 export const resetMessagesSlice = () => (dispatch) => {
   dispatch(messageSlice.actions.resetMessageSlice());
 };
-
 export default messageSlice.reducer;
