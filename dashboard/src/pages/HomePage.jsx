@@ -26,7 +26,7 @@ import AddProject from "./sub-components/AddProject";
 import AddSoftwareApplications from "./sub-components/AddSoftwareApplications";
 import Account from "./sub-components/Account";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "@/store/slices/userSlice";
+import { logout, clearAllUserErrors } from "@/store/slices/userSlice";
 import { toast } from "react-toastify";
 import Messages from "./sub-components/Messages";
 import AddTimeline from "./sub-components/AddTimeline";
@@ -48,7 +48,7 @@ const HomePage = () => {
     if (!isAuthenticated) {
       navigateTo("/login");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, error, dispatch, navigateTo]);
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <aside className="fixed inset-y-0 left-0 hidden w-14 flex-col border-r bg-background sm:flex z-50">
@@ -326,28 +326,20 @@ const HomePage = () => {
         switch (active) {
           case "Dashboard":
             return <Dashboard />;
-            break;
           case "Add Project":
             return <AddProject />;
-            break;
           case "Add Skill":
             return <AddSkill />;
-            break;
           case "Add Uses":
             return <AddSoftwareApplications />;
-            break;
           case "Add Timeline":
             return <AddTimeline />;
-            break;
           case "Messages":
             return <Messages />;
-            break;
           case "Account":
             return <Account />;
-            break;
           default:
             return <Dashboard />;
-            break;
         }
       })()}
     </div>

@@ -53,16 +53,12 @@ const Account = () => {
               switch (selectedComponent) {
                 case "Profile":
                   return <Profile />;
-                  break;
                 case "Update Profile":
                   return <UpdateProfile />;
-                  break;
                 case "Update Password":
                   return <UpdatePassword />;
-                  break;
                 default:
                   return <Profile />;
-                  break;
               }
             })()}
           </div>

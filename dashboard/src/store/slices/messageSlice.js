@@ -21,7 +21,6 @@ const messageSlice = createSlice({
       state.loading = false;
     },
     getAllMessagesFailed(state, action) {
-      state.messages = state.messages;
       state.error = action.payload;
       state.loading = false;
     },
@@ -40,15 +39,13 @@ const messageSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    resetMessageSlice(state, action) {
+    resetMessageSlice(state) {
       state.error = null;
-      state.messages = state.messages;
       state.message = null;
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state.messages = state.messages;
     },
   },
 });
@@ -57,7 +54,9 @@ const messageSlice = createSlice({
 export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
-    const { data } = await api.get("/message/getall");
+    const { data } = await axios.get("https://codeawakening.onrender.com/api/v1/message/getall", {
+      withCredentials: true,
+    });
     dispatch(messageSlice.actions.getAllMessagesSuccess(data.messages));
   } catch (error) {
     dispatch(
@@ -70,7 +69,9 @@ export const getAllMessages = () => async (dispatch) => {
 export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
-    const { data } = await api.delete(`/message/delete/${id}`);
+    const { data } = await axios.delete(`https://codeawakening.onrender.com/api/v1/message/delete/${id}`, {
+      withCredentials: true,
+    });
     dispatch(messageSlice.actions.deleteMessageSuccess(data.message));
   } catch (error) {
     dispatch(

@@ -39,8 +39,6 @@ const userSlice = createSlice({
     },
     logoutFailed(state, action) {
       state.loading = false;
-      state.isAuthenticated = state.isAuthenticated;
-      state.user = state.user;
       state.error = action.payload;
     },
     loadUserRequest(state, action) {
@@ -102,9 +100,8 @@ const userSlice = createSlice({
       state.isUpdated = false;
       state.message = null;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state = state.user;
     },
   },
 });
