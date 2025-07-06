@@ -152,7 +152,10 @@ export const updateProject = (id, newData) => async (dispatch) => {
     dispatch(projectSlice.actions.updateProjectSuccess(response.data.message));
     dispatch(projectSlice.actions.clearAllErrors());
   } catch (error) {
-    console.log(error);
+    // Log error safely without exposing sensitive data
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Update project error:', error.response?.status);
+    }
     dispatch(
       projectSlice.actions.updateProjectFailed(error.response.data.message)
     );

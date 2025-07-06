@@ -206,8 +206,23 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
-  const id = "685c094250254eda067dcc41";
-  const user = await User.findById(id);
+  // Get the first user (main portfolio owner) or use query parameter for specific user
+  const userId = req.query.userId;
+  let user;
+  
+  if (userId) {
+    user = await User.findById(userId);
+    if (!user) {
+      return next(new ErrorHandler("User not found", 404));
+    }
+  } else {
+    // Get the first user as the main portfolio owner
+    user = await User.findOne().sort({ createdAt: 1 });
+    if (!user) {
+      return next(new ErrorHandler("No portfolio user found", 404));
+    }
+  }
+  
   res.status(200).json({
     success: true,
     user,

@@ -110,8 +110,6 @@ export const addNewSkill = (data) => async (dispatch) => {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(response);
-    console.log(response.data.message);
     dispatch(skillSlice.actions.addNewSkillSuccess(response.data.message));
     dispatch(skillSlice.actions.clearAllErrors());
   } catch (error) {

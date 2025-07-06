@@ -49,18 +49,19 @@ const forgotResetPassSlice = createSlice({
 export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
-    console.log(email);
     const response = await axios.post(
       "https://codeawakening.onrender.com/api/v1/user/password/forgot",
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
-    console.log(response);
     dispatch(
       forgotResetPassSlice.actions.forgotPasswordSuccess(response.data.message)
     );
   } catch (error) {
-    console.log(error);
+    // Log error safely without exposing sensitive data
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Forgot password error:', error.response?.status);
+    }
     dispatch(
       forgotResetPassSlice.actions.forgotPasswordFailed(
         error.response.data.message
@@ -81,12 +82,14 @@ export const resetPassword =
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(response);
       dispatch(
         forgotResetPassSlice.actions.resetPasswordSuccess(response.data.message)
       );
     } catch (error) {
-      console.log(error);
+      // Log error safely without exposing sensitive data
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Reset password error:', error.response?.status);
+      }
       dispatch(
         forgotResetPassSlice.actions.resetPasswordFailed(
           error.response.data.message
