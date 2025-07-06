@@ -21,7 +21,6 @@ const softwareApplicationSlice = createSlice({
       state.loading = false;
     },
     getAllsoftwareApplicationsFailed(state, action) {
-      state.softwareApplications = state.softwareApplications;
       state.error = action.payload;
       state.loading = false;
     },
@@ -55,15 +54,13 @@ const softwareApplicationSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    resetSoftwareApplicationSlice(state, action) {
+    resetSoftwareApplicationSlice(state) {
       state.error = null;
-      state.softwareApplications = state.softwareApplications;
       state.message = null;
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state.softwareApplications = state.softwareApplications;
     },
   },
 });

@@ -21,7 +21,6 @@ const timelineSlice = createSlice({
       state.loading = false;
     },
     getAllTimelineFailed(state, action) {
-      state.timeline = state.timeline;
       state.error = action.payload;
       state.loading = false;
     },
@@ -55,15 +54,13 @@ const timelineSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    resetTimelineSlice(state, action) {
+    resetTimelineSlice(state) {
       state.error = null;
-      state.timeline = state.timeline;
       state.message = null;
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state = state.timeline;
     },
   },
 });

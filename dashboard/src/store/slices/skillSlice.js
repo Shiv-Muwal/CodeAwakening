@@ -21,7 +21,6 @@ const skillSlice = createSlice({
       state.loading = false;
     },
     getAllSkillsFailed(state, action) {
-      state.skills = state.skills;
       state.error = action.payload;
       state.loading = false;
     },
@@ -70,15 +69,13 @@ const skillSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    resetSkillSlice(state, action) {
+    resetSkillSlice(state) {
       state.error = null;
-      state.skills = state.skills;
       state.message = null;
       state.loading = false;
     },
-    clearAllErrors(state, action) {
+    clearAllErrors(state) {
       state.error = null;
-      state.skills = state.skills;
     },
   },
 });
