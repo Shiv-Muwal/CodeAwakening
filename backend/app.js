@@ -18,12 +18,24 @@ dotenv.config({ path: "./config/config.env" });
 app.use(
   cors({
     origin: [process.env.PORTFOLIO_URL, process.env.DASHBOARD_URL],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With", "Accept", "Origin"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: [
+      "Content-Type", 
+      "Authorization", 
+      "X-Requested-With", 
+      "Accept", 
+      "Origin",
+      "Cache-Control",
+      "X-File-Name"
+    ],
     credentials: true,
     optionsSuccessStatus: 200, // For legacy browser support
+    preflightContinue: false,
   })
 );
+
+// Additional OPTIONS handler for any missed preflight requests
+app.options('*', cors());
 
 app.use(cookieParser());
 app.use(express.json());
