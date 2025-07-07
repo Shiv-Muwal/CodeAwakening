@@ -32,14 +32,11 @@ const About = () => {
           </div>
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
             <p>
-              My name is Zeeshan, but my followers call me Zeeshu. I will
-              graduate in Software Engineering from SMIU around 2024. I work as
-              a web developer and freelancer. My hobbies include watching
-              movies, series, playing video games, and occasionally cooking.
+              My name is Shivdayal Singh. My interests span across technology, literature, and culinary arts. I am certified in Frontend Development from Radial Code, Hisar, and in Python Backend from TCA, Gurgaon. Known for my patience and tenacity, I bring a focused and aggressive approach to meeting project deadlines and ensuring high-quality deliverables
             </p>
             <p>
-              I have interests not only in technology but also in movies,
-              series, video games, and cooking. I excel in meeting deadlines for
+              I have interests not only in technology but also in reading books,
+              watching movies, video games, and cooking. I excel in meeting deadlines for
               my work.
             </p>
           </div>

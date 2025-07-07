@@ -1,11 +1,8 @@
 import {
   ExternalLink,
-  Facebook,
   Github,
   Instagram,
   Linkedin,
-  Twitter,
-  Youtube,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -78,11 +75,9 @@ const Hero = () => {
   // Provide fallback values if user data is missing
   const userData = user || {};
   const {
-    instagramURL = "#",
-    facebookURL = "#",
-    linkedInURL = "#",
-    twitterURL = "#",
-    githubURL = "#",
+    instagramURL = "https://www.instagram.com/shiv.muwal/",
+    linkedInURL = "https://www.linkedin.com/in/shivdayal-singh-547026324/",
+    githubURL = "https://github.com/Shiv-Muwal",
     aboutMe = "Welcome to my portfolio!",
     resume = null
   } = userData;
@@ -95,7 +90,7 @@ const Hero = () => {
       </div>
       <h1 className="overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] 
       md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
-        Hey, I'm Zeeshan
+        Hey, I'm Shivdayal Singh
       </h1>
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
@@ -110,32 +105,19 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
-          <Youtube className="text-red-500 w-7 h-7"/>
-        </Link>
-        {instagramURL && instagramURL !== "#" && (
+        {instagramURL && instagramURL !== "https://www.instagram.com/shiv.muwal/" && (
           <Link to={instagramURL} target="_blank">
             <Instagram className="text-pink-500 w-7 h-7" />
           </Link>
         )}
-        {facebookURL && facebookURL !== "#" && (
-          <Link to={facebookURL} target="_blank">
-            <Facebook className="text-blue-800 w-7 h-7" />
-          </Link>
-        )}
-        {linkedInURL && linkedInURL !== "#" && (
+        {linkedInURL && linkedInURL !== "https://www.linkedin.com/in/shivdayal-singh-547026324/" && (
           <Link to={linkedInURL} target="_blank">
             <Linkedin className="text-sky-500 w-7 h-7" />
           </Link>
         )}
-        {twitterURL && twitterURL !== "#" && (
-          <Link to={twitterURL} target="_blank">
-            <Twitter className="text-blue-800 w-7 h-7" />
-          </Link>
-        )}
       </div>
       <div className="mt-4 md:mt-8 lg:mt-10  flex gap-3">
-        {githubURL && githubURL !== "#" && (
+        {githubURL && githubURL !== "https://github.com/Shiv-Muwal" && (
           <Link to={githubURL} target="_blank">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
