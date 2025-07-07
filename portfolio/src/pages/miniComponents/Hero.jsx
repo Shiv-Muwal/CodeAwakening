@@ -61,8 +61,8 @@ const Hero = () => {
         </div>
         <div className="text-red-500">
           <p>{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
+          <button
+            onClick={() => window.location.reload()}
             className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
           >
             Retry
@@ -95,7 +95,10 @@ const Hero = () => {
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
         <Typewriter
-          words={["FULLSTACK DEVELOPER", "YOUTUBER", "FREELANCER"]}
+          words={["FULLSTACK DEVELOPER",
+            "FRONTEND SPECIALIST",
+            "WEB DEVELOPMENT ENTHUSIAST",
+            "DEDICATED CODER"]}
           loop={50}
           cursor
           typeSpeed={70}
@@ -105,19 +108,21 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        {instagramURL && instagramURL !== "https://www.instagram.com/shiv.muwal/" && (
+        {/* Fixed: Removed unnecessary URL comparisons */}
+        {instagramURL && (
           <Link to={instagramURL} target="_blank">
             <Instagram className="text-pink-500 w-7 h-7" />
           </Link>
         )}
-        {linkedInURL && linkedInURL !== "https://www.linkedin.com/in/shivdayal-singh-547026324/" && (
+        {linkedInURL && (
           <Link to={linkedInURL} target="_blank">
             <Linkedin className="text-sky-500 w-7 h-7" />
           </Link>
         )}
       </div>
-      <div className="mt-4 md:mt-8 lg:mt-10  flex gap-3">
-        {githubURL && githubURL !== "https://github.com/Shiv-Muwal" && (
+      <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
+        {/* Fixed: Simplified GitHub condition */}
+        {githubURL && (
           <Link to={githubURL} target="_blank">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
@@ -127,19 +132,20 @@ const Hero = () => {
             </Button>
           </Link>
         )}
-        {resume && resume.url && (
+        {/* Fixed: Resume URL check */}
+        {resume?.url && (
           <Link to={resume.url} target="_blank">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <ExternalLink />
               </span>
-              <span>Resume </span>
+              <span>Resume</span>
             </Button>
           </Link>
         )}
       </div>
       <p className="mt-8 text-xl tracking-[2px]">{aboutMe}</p>
-      <hr className="my-8 md::my-10 " />
+      <hr className="my-8 md:my-10" />
     </div>
   );
 };
