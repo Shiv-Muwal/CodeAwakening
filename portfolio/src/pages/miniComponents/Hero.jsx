@@ -113,7 +113,7 @@ const Hero = () => {
         <Typewriter
           words={["FULLSTACK DEVELOPER",
             "FRONTEND SPECIALIST",
-            "WEB DEVELOPMENT ENTHUSIAST",
+            "DEVELOPMENT ENTHUSIAST",
             "DEDICATED CODER"]}
           loop={50}
           cursor
