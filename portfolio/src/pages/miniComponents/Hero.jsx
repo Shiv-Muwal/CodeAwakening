@@ -5,7 +5,6 @@ import {
   Linkedin,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -72,14 +71,15 @@ const Hero = () => {
     );
   }
 
-  // Provide fallback values if user data is missing
+  // Use actual user data with proper fallbacks
   const userData = user || {};
   const {
-    instagramURL = "https://www.instagram.com/shiv.muwal/",
-    linkedInURL = "https://www.linkedin.com/in/shivdayal-singh-547026324/",
-    githubURL = "https://github.com/Shiv-Muwal",
+    fullName = "Developer",
+    instagramURL,
+    linkedInURL,
+    githubURL,
     aboutMe = "Welcome to my portfolio!",
-    resume = null
+    resume
   } = userData;
 
   return (
@@ -90,7 +90,7 @@ const Hero = () => {
       </div>
       <h1 className="overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] 
       md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
-        Hey, I'm Shivdayal Singh
+        Hey, I'm {fullName}
       </h1>
       <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
@@ -108,40 +108,40 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        {/* Fixed: Removed unnecessary URL comparisons */}
+        {/* Fixed: Use anchor tags for external links */}
         {instagramURL && (
-          <Link to={instagramURL} target="_blank">
+          <a href={instagramURL} target="_blank" rel="noopener noreferrer">
             <Instagram className="text-pink-500 w-7 h-7" />
-          </Link>
+          </a>
         )}
         {linkedInURL && (
-          <Link to={linkedInURL} target="_blank">
+          <a href={linkedInURL} target="_blank" rel="noopener noreferrer">
             <Linkedin className="text-sky-500 w-7 h-7" />
-          </Link>
+          </a>
         )}
       </div>
       <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
-        {/* Fixed: Simplified GitHub condition */}
+        {/* Fixed: Use anchor tags for external GitHub link */}
         {githubURL && (
-          <Link to={githubURL} target="_blank">
+          <a href={githubURL} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <Github />
               </span>
               <span>Github</span>
             </Button>
-          </Link>
+          </a>
         )}
-        {/* Fixed: Resume URL check */}
-        {resume?.url && (
-          <Link to={resume.url} target="_blank">
+        {/* Fixed: Resume URL check and anchor tag */}
+        {resume && resume.url && (
+          <a href={resume.url} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <ExternalLink />
               </span>
               <span>Resume</span>
             </Button>
-          </Link>
+          </a>
         )}
       </div>
       <p className="mt-8 text-xl tracking-[2px]">{aboutMe}</p>
