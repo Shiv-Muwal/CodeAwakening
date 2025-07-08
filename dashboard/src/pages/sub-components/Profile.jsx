@@ -61,23 +61,43 @@ const Profile = () => {
               </div>
               <div className="grid gap-2">
                 <Label>Github URL</Label>
-                <Input type="text" defaultValue={user.githubURL} disabled />
+                <Input 
+                  type="text" 
+                  defaultValue={user.githubURL && user.githubURL !== "undefined" ? user.githubURL : ""} 
+                  disabled 
+                />
               </div>
               <div className="grid gap-2">
                 <Label>LinkedIn URL</Label>
-                <Input type="text" defaultValue={user.linkedInURL} disabled />
+                <Input 
+                  type="text" 
+                  defaultValue={user.linkedInURL && user.linkedInURL !== "undefined" ? user.linkedInURL : ""} 
+                  disabled 
+                />
               </div>
               <div className="grid gap-2">
                 <Label>Instagram URL</Label>
-                <Input type="text" defaultValue={user.instagramURL} disabled />
+                <Input 
+                  type="text" 
+                  defaultValue={user.instagramURL && user.instagramURL !== "undefined" ? user.instagramURL : ""} 
+                  disabled 
+                />
               </div>
               <div className="grid gap-2">
                 <Label>Twitter(X) URL</Label>
-                <Input type="text" defaultValue={user.twitterURL} disabled />
+                <Input 
+                  type="text" 
+                  defaultValue={user.twitterURL && user.twitterURL !== "undefined" ? user.twitterURL : ""} 
+                  disabled 
+                />
               </div>
               <div className="grid gap-2">
                 <Label>Facebook URL</Label>
-                <Input type="text" defaultValue={user.facebookURL} disabled />
+                <Input 
+                  type="text" 
+                  defaultValue={user.facebookURL && user.facebookURL !== "undefined" ? user.facebookURL : ""} 
+                  disabled 
+                />
               </div>
             </div>
           </div>

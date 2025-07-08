@@ -75,12 +75,25 @@ const Hero = () => {
   // Provide fallback values if user data is missing
   const userData = user || {};
   const {
-    instagramURL = "https://www.instagram.com/shiv.muwal/",
-    linkedInURL = "https://www.linkedin.com/in/shivdayal-singh-547026324/",
-    githubURL = "https://github.com/Shiv-Muwal",
+    instagramURL,
+    linkedInURL,
+    githubURL,
     aboutMe = "Welcome to my portfolio!",
     resume = null
   } = userData;
+
+  // Clean URL helper function
+  const cleanURL = (url) => {
+    if (!url || url === "undefined" || url === "null") {
+      return null;
+    }
+    return url;
+  };
+
+  // Get cleaned URLs
+  const cleanInstagramURL = cleanURL(instagramURL);
+  const cleanLinkedInURL = cleanURL(linkedInURL);
+  const cleanGithubURL = cleanURL(githubURL);
 
   return (
     <div className="w-full">
@@ -108,22 +121,22 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        {/* Fixed: Removed unnecessary URL comparisons */}
-        {instagramURL && (
-          <Link to={instagramURL} target="_blank">
+        {/* Fixed: Using cleaned URLs */}
+        {cleanInstagramURL && (
+          <Link to={cleanInstagramURL} target="_blank">
             <Instagram className="text-pink-500 w-7 h-7" />
           </Link>
         )}
-        {linkedInURL && (
-          <Link to={linkedInURL} target="_blank">
+        {cleanLinkedInURL && (
+          <Link to={cleanLinkedInURL} target="_blank">
             <Linkedin className="text-sky-500 w-7 h-7" />
           </Link>
         )}
       </div>
       <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
-        {/* Fixed: Simplified GitHub condition */}
-        {githubURL && (
-          <Link to={githubURL} target="_blank">
+        {/* Fixed: Using cleaned GitHub URL */}
+        {cleanGithubURL && (
+          <Link to={cleanGithubURL} target="_blank">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <Github />
