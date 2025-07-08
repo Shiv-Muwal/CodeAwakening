@@ -47,7 +47,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     portfolioURL,
     githubURL,
     instagramURL,
-    twitterURL,
+    discordURL,
     facebookURL,
     linkedInURL,
   } = req.body;
@@ -75,7 +75,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     portfolioURL,
     githubURL: cleanURLForRegistration(githubURL),
     instagramURL: cleanURLForRegistration(instagramURL),
-    twitterURL: cleanURLForRegistration(twitterURL),
+    discordURL: cleanURLForRegistration(discordURL),
     facebookURL: cleanURLForRegistration(facebookURL),
     linkedInURL: cleanURLForRegistration(linkedInURL),
     avatar: {
@@ -154,7 +154,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     instagramURL: cleanURL(req.body.instagramURL),
     portfolioURL: req.body.portfolioURL,
     facebookURL: cleanURL(req.body.facebookURL),
-    twitterURL: cleanURL(req.body.twitterURL),
+    discordURL: cleanURL(req.body.discordURL),
     linkedInURL: cleanURL(req.body.linkedInURL),
   };
   if (req.files && req.files.avatar) {

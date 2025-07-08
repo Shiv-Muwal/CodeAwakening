@@ -3,6 +3,7 @@ import {
   Github,
   Instagram,
   Linkedin,
+  Send,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -78,8 +79,9 @@ const Hero = () => {
     instagramURL,
     linkedInURL,
     githubURL,
+    discordURL,
     aboutMe = "Welcome to my portfolio!",
-    resume = null
+    resume = null,
   } = userData;
 
   // Clean URL helper function
@@ -94,6 +96,7 @@ const Hero = () => {
   const cleanInstagramURL = cleanURL(instagramURL);
   const cleanLinkedInURL = cleanURL(linkedInURL);
   const cleanGithubURL = cleanURL(githubURL);
+  const cleanDiscordURL = cleanURL(discordURL);
 
   return (
     <div className="w-full">
@@ -130,6 +133,11 @@ const Hero = () => {
         {cleanLinkedInURL && (
           <Link to={cleanLinkedInURL} target="_blank">
             <Linkedin className="text-sky-500 w-7 h-7" />
+          </Link>
+        )}
+        {cleanDiscordURL && (
+          <Link to={cleanDiscordURL} target="_blank">
+            <Send className="text-indigo-500 w-7 h-7" />
           </Link>
         )}
       </div>

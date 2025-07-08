@@ -56,7 +56,7 @@ const userSchema = new mongoose.Schema({
   instagramURL: {
     type: String,
   },
-  twitterURL: {
+  discordURL: {
     type: String,
   },
   linkedInURL: {
