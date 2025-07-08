@@ -25,19 +25,19 @@ const UpdateProfile = () => {
   const [aboutMe, setAboutMe] = useState(user && user.aboutMe);
   const [portfolioURL, setPortfolioURL] = useState(user && user.portfolioURL);
   const [linkedInURL, setLinkedInURL] = useState(
-    user && (user.linkedInURL === "undefined" ? "" : user.linkedInURL)
+    user && user.linkedInURL && user.linkedInURL !== "undefined" ? user.linkedInURL : ""
   );
   const [githubURL, setGithubURL] = useState(
-    user && (user.githubURL === "undefined" ? "" : user.githubURL)
+    user && user.githubURL && user.githubURL !== "undefined" ? user.githubURL : ""
   );
   const [instagramURL, setInstagramURL] = useState(
-    user && (user.instagramURL === "undefined" ? "" : user.instagramURL)
+    user && user.instagramURL && user.instagramURL !== "undefined" ? user.instagramURL : ""
   );
   const [twitterURL, setTwitterURL] = useState(
-    user && (user.twitterURL === "undefined" ? "" : user.twitterURL)
+    user && user.twitterURL && user.twitterURL !== "undefined" ? user.twitterURL : ""
   );
   const [facebookURL, setFacebookURL] = useState(
-    user && (user.facebookURL === "undefined" ? "" : user.facebookURL)
+    user && user.facebookURL && user.facebookURL !== "undefined" ? user.facebookURL : ""
   );
   const [avatar, setAvatar] = useState(user && user.avatar && user.avatar.url);
   const [avatarPreview, setAvatarPreview] = useState(
@@ -76,13 +76,30 @@ const UpdateProfile = () => {
     formData.append("phone", phone);
     formData.append("aboutMe", aboutMe);
     formData.append("portfolioURL", portfolioURL);
-    formData.append("linkedInURL", linkedInURL);
-    formData.append("githubURL", githubURL);
-    formData.append("instagramURL", instagramURL);
-    formData.append("twitterURL", twitterURL);
-    formData.append("facebookURL", facebookURL);
-    formData.append("avatar", avatar);
-    formData.append("resume", resume);
+    
+    // Only append social media URLs if they have valid values
+    if (linkedInURL && linkedInURL.trim()) {
+      formData.append("linkedInURL", linkedInURL);
+    }
+    if (githubURL && githubURL.trim()) {
+      formData.append("githubURL", githubURL);
+    }
+    if (instagramURL && instagramURL.trim()) {
+      formData.append("instagramURL", instagramURL);
+    }
+    if (twitterURL && twitterURL.trim()) {
+      formData.append("twitterURL", twitterURL);
+    }
+    if (facebookURL && facebookURL.trim()) {
+      formData.append("facebookURL", facebookURL);
+    }
+    
+    if (avatar) {
+      formData.append("avatar", avatar);
+    }
+    if (resume) {
+      formData.append("resume", resume);
+    }
     dispatch(updateProfile(formData));
   };
 
@@ -99,6 +116,24 @@ const UpdateProfile = () => {
       toast.success(message);
     }
   }, [dispatch, loading, error, isUpdated]);
+
+  // Update form state when user data changes
+  useEffect(() => {
+    if (user) {
+      setFullName(user.fullName || "");
+      setEmail(user.email || "");
+      setPhone(user.phone || "");
+      setAboutMe(user.aboutMe || "");
+      setPortfolioURL(user.portfolioURL || "");
+      setLinkedInURL(user.linkedInURL && user.linkedInURL !== "undefined" ? user.linkedInURL : "");
+      setGithubURL(user.githubURL && user.githubURL !== "undefined" ? user.githubURL : "");
+      setInstagramURL(user.instagramURL && user.instagramURL !== "undefined" ? user.instagramURL : "");
+      setTwitterURL(user.twitterURL && user.twitterURL !== "undefined" ? user.twitterURL : "");
+      setFacebookURL(user.facebookURL && user.facebookURL !== "undefined" ? user.facebookURL : "");
+      setAvatarPreview(user.avatar && user.avatar.url ? user.avatar.url : "");
+      setResumePreview(user.resume && user.resume.url ? user.resume.url : "");
+    }
+  }, [user]);
 
   return (
     <>

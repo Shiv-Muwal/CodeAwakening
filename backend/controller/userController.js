@@ -121,12 +121,12 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     email: req.body.email,
     phone: req.body.phone,
     aboutMe: req.body.aboutMe,
-    githubURL: req.body.githubURL,
-    instagramURL: req.body.instagramURL,
+    githubURL: req.body.githubURL || null,
+    instagramURL: req.body.instagramURL || null,
     portfolioURL: req.body.portfolioURL,
-    facebookURL: req.body.facebookURL,
-    twitterURL: req.body.twitterURL,
-    linkedInURL: req.body.linkedInURL,
+    facebookURL: req.body.facebookURL || null,
+    twitterURL: req.body.twitterURL || null,
+    linkedInURL: req.body.linkedInURL || null,
   };
   if (req.files && req.files.avatar) {
     const avatar = req.files.avatar;
@@ -160,6 +160,13 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
       url: newResume.secure_url,
     };
   }
+
+  // Clean up any "undefined" strings before updating
+  Object.keys(newUserData).forEach(key => {
+    if (newUserData[key] === "undefined" || newUserData[key] === "") {
+      newUserData[key] = null;
+    }
+  });
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,
@@ -206,8 +213,14 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
-  const id = "685c094250254eda067dcc41";
-  const user = await User.findById(id);
+  // Get the first user from the database (assuming single user portfolio)
+  // You can modify this logic based on your requirements
+  const user = await User.findOne();
+  
+  if (!user) {
+    return next(new ErrorHandler("User not found", 404));
+  }
+  
   res.status(200).json({
     success: true,
     user,

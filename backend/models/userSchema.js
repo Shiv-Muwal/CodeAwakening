@@ -52,18 +52,23 @@ const userSchema = new mongoose.Schema({
   },
   githubURL: {
     type: String,
+    default: null,
   },
   instagramURL: {
     type: String,
+    default: null,
   },
   twitterURL: {
     type: String,
+    default: null,
   },
   linkedInURL: {
     type: String,
+    default: null,
   },
   facebookURL: {
     type: String,
+    default: null,
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
@@ -73,6 +78,18 @@ const userSchema = new mongoose.Schema({
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+// Clean up undefined strings before saving
+userSchema.pre("save", function (next) {
+  // Convert "undefined" strings to null for social media URLs
+  const socialFields = ['githubURL', 'instagramURL', 'twitterURL', 'linkedInURL', 'facebookURL'];
+  socialFields.forEach(field => {
+    if (this[field] === "undefined" || this[field] === "") {
+      this[field] = null;
+    }
+  });
   next();
 });
 

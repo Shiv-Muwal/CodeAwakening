@@ -75,12 +75,23 @@ const Hero = () => {
   // Provide fallback values if user data is missing
   const userData = user || {};
   const {
-    instagramURL = "https://www.instagram.com/shiv.muwal/",
-    linkedInURL = "https://www.linkedin.com/in/shivdayal-singh-547026324/",
-    githubURL = "https://github.com/Shiv-Muwal",
+    instagramURL = "",
+    linkedInURL = "",
+    githubURL = "",
     aboutMe = "Welcome to my portfolio!",
     resume = null
   } = userData;
+
+  // Helper function to validate URLs
+  const isValidURL = (url) => {
+    if (!url || url === "undefined" || url === "null") return false;
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
 
   return (
     <div className="w-full">
@@ -108,22 +119,20 @@ const Hero = () => {
       </h1>
       <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
       items-center mt-4 md:mt-8 lg:mt-10">
-        {/* Fixed: Removed unnecessary URL comparisons */}
-        {instagramURL && (
-          <Link to={instagramURL} target="_blank">
+        {isValidURL(instagramURL) && (
+          <Link to={instagramURL} target="_blank" rel="noopener noreferrer">
             <Instagram className="text-pink-500 w-7 h-7" />
           </Link>
         )}
-        {linkedInURL && (
-          <Link to={linkedInURL} target="_blank">
+        {isValidURL(linkedInURL) && (
+          <Link to={linkedInURL} target="_blank" rel="noopener noreferrer">
             <Linkedin className="text-sky-500 w-7 h-7" />
           </Link>
         )}
       </div>
       <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
-        {/* Fixed: Simplified GitHub condition */}
-        {githubURL && (
-          <Link to={githubURL} target="_blank">
+        {isValidURL(githubURL) && (
+          <Link to={githubURL} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <Github />
@@ -132,9 +141,8 @@ const Hero = () => {
             </Button>
           </Link>
         )}
-        {/* Fixed: Resume URL check */}
-        {resume?.url && (
-          <Link to={resume.url} target="_blank">
+        {isValidURL(resume?.url) && (
+          <Link to={resume.url} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <ExternalLink />
