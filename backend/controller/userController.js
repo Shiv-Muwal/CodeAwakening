@@ -51,6 +51,21 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     facebookURL,
     linkedInURL,
   } = req.body;
+
+  // Helper function to clean URL values for registration
+  const cleanURLForRegistration = (url) => {
+    if (!url || url === "undefined" || url === "null" || url.trim() === "") {
+      return undefined;
+    }
+    const cleanedUrl = url.trim();
+    
+    // Basic URL validation
+    if (cleanedUrl && !cleanedUrl.startsWith('http://') && !cleanedUrl.startsWith('https://')) {
+      return `https://${cleanedUrl}`;
+    }
+    return cleanedUrl;
+  };
+
   const user = await User.create({
     fullName,
     email,
@@ -58,11 +73,11 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     aboutMe,
     password,
     portfolioURL,
-    githubURL,
-    instagramURL,
-    twitterURL,
-    facebookURL,
-    linkedInURL,
+    githubURL: cleanURLForRegistration(githubURL),
+    instagramURL: cleanURLForRegistration(instagramURL),
+    twitterURL: cleanURLForRegistration(twitterURL),
+    facebookURL: cleanURLForRegistration(facebookURL),
+    linkedInURL: cleanURLForRegistration(linkedInURL),
     avatar: {
       public_id: cloudinaryResponseForAvatar.public_id,
       url: cloudinaryResponseForAvatar.secure_url, 
@@ -116,17 +131,31 @@ export const getUser = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const updateProfile = catchAsyncErrors(async (req, res, next) => {
+  // Helper function to clean and validate URL values
+  const cleanURL = (url) => {
+    if (!url || url === "undefined" || url === "null" || url.trim() === "") {
+      return undefined;
+    }
+    const cleanedUrl = url.trim();
+    
+    // Basic URL validation
+    if (cleanedUrl && !cleanedUrl.startsWith('http://') && !cleanedUrl.startsWith('https://')) {
+      return `https://${cleanedUrl}`;
+    }
+    return cleanedUrl;
+  };
+
   const newUserData = {
     fullName: req.body.fullName,
     email: req.body.email,
     phone: req.body.phone,
     aboutMe: req.body.aboutMe,
-    githubURL: req.body.githubURL,
-    instagramURL: req.body.instagramURL,
+    githubURL: cleanURL(req.body.githubURL),
+    instagramURL: cleanURL(req.body.instagramURL),
     portfolioURL: req.body.portfolioURL,
-    facebookURL: req.body.facebookURL,
-    twitterURL: req.body.twitterURL,
-    linkedInURL: req.body.linkedInURL,
+    facebookURL: cleanURL(req.body.facebookURL),
+    twitterURL: cleanURL(req.body.twitterURL),
+    linkedInURL: cleanURL(req.body.linkedInURL),
   };
   if (req.files && req.files.avatar) {
     const avatar = req.files.avatar;

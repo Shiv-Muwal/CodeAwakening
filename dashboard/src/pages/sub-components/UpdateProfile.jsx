@@ -13,6 +13,7 @@ import { toast } from "react-toastify";
 import { Textarea } from "@/components/ui/textarea";
 import SpecialLoadingButton from "./SpecialLoadingButton";
 import { Link } from "react-router-dom";
+import { validateURLFields } from "@/utils/urlHelpers";
 
 const UpdateProfile = () => {
   const { user, loading, error, isUpdated, message } = useSelector(
@@ -25,19 +26,19 @@ const UpdateProfile = () => {
   const [aboutMe, setAboutMe] = useState(user && user.aboutMe);
   const [portfolioURL, setPortfolioURL] = useState(user && user.portfolioURL);
   const [linkedInURL, setLinkedInURL] = useState(
-    user && (user.linkedInURL === "undefined" ? "" : user.linkedInURL)
+    user && user.linkedInURL && user.linkedInURL !== "undefined" ? user.linkedInURL : ""
   );
   const [githubURL, setGithubURL] = useState(
-    user && (user.githubURL === "undefined" ? "" : user.githubURL)
+    user && user.githubURL && user.githubURL !== "undefined" ? user.githubURL : ""
   );
   const [instagramURL, setInstagramURL] = useState(
-    user && (user.instagramURL === "undefined" ? "" : user.instagramURL)
+    user && user.instagramURL && user.instagramURL !== "undefined" ? user.instagramURL : ""
   );
   const [twitterURL, setTwitterURL] = useState(
-    user && (user.twitterURL === "undefined" ? "" : user.twitterURL)
+    user && user.twitterURL && user.twitterURL !== "undefined" ? user.twitterURL : ""
   );
   const [facebookURL, setFacebookURL] = useState(
-    user && (user.facebookURL === "undefined" ? "" : user.facebookURL)
+    user && user.facebookURL && user.facebookURL !== "undefined" ? user.facebookURL : ""
   );
   const [avatar, setAvatar] = useState(user && user.avatar && user.avatar.url);
   const [avatarPreview, setAvatarPreview] = useState(
@@ -70,17 +71,33 @@ const UpdateProfile = () => {
   };
 
   const handleUpdateProfile = () => {
+    // Validate URLs before submitting
+    const urlFields = [
+      { name: "Portfolio URL", value: portfolioURL },
+      { name: "LinkedIn URL", value: linkedInURL },
+      { name: "GitHub URL", value: githubURL },
+      { name: "Instagram URL", value: instagramURL },
+      { name: "Twitter URL", value: twitterURL },
+      { name: "Facebook URL", value: facebookURL },
+    ];
+
+    const { isValid, errorMessage } = validateURLFields(urlFields);
+    if (!isValid) {
+      toast.error(errorMessage);
+      return;
+    }
+
     const formData = new FormData();
     formData.append("fullName", fullName);
     formData.append("email", email);
     formData.append("phone", phone);
     formData.append("aboutMe", aboutMe);
     formData.append("portfolioURL", portfolioURL);
-    formData.append("linkedInURL", linkedInURL);
-    formData.append("githubURL", githubURL);
-    formData.append("instagramURL", instagramURL);
-    formData.append("twitterURL", twitterURL);
-    formData.append("facebookURL", facebookURL);
+    formData.append("linkedInURL", linkedInURL || "");
+    formData.append("githubURL", githubURL || "");
+    formData.append("instagramURL", instagramURL || "");
+    formData.append("twitterURL", twitterURL || "");
+    formData.append("facebookURL", facebookURL || "");
     formData.append("avatar", avatar);
     formData.append("resume", resume);
     dispatch(updateProfile(formData));
@@ -98,7 +115,7 @@ const UpdateProfile = () => {
     if (message) {
       toast.success(message);
     }
-  }, [dispatch, loading, error, isUpdated]);
+  }, [dispatch, loading, error, isUpdated, message]);
 
   return (
     <>
