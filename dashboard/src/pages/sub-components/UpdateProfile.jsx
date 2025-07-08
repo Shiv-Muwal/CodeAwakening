@@ -34,8 +34,8 @@ const UpdateProfile = () => {
   const [instagramURL, setInstagramURL] = useState(
     user && user.instagramURL && user.instagramURL !== "undefined" ? user.instagramURL : ""
   );
-  const [twitterURL, setTwitterURL] = useState(
-    user && user.twitterURL && user.twitterURL !== "undefined" ? user.twitterURL : ""
+  const [discordURL, setDiscordURL] = useState(
+    user && user.discordURL && user.discordURL !== "undefined" ? user.discordURL : ""
   );
   const [facebookURL, setFacebookURL] = useState(
     user && user.facebookURL && user.facebookURL !== "undefined" ? user.facebookURL : ""
@@ -77,7 +77,7 @@ const UpdateProfile = () => {
       { name: "LinkedIn URL", value: linkedInURL },
       { name: "GitHub URL", value: githubURL },
       { name: "Instagram URL", value: instagramURL },
-      { name: "Twitter URL", value: twitterURL },
+      { name: "Discord URL", value: discordURL },
       { name: "Facebook URL", value: facebookURL },
     ];
 
@@ -96,7 +96,7 @@ const UpdateProfile = () => {
     formData.append("linkedInURL", linkedInURL || "");
     formData.append("githubURL", githubURL || "");
     formData.append("instagramURL", instagramURL || "");
-    formData.append("twitterURL", twitterURL || "");
+    formData.append("discordURL", discordURL || "");
     formData.append("facebookURL", facebookURL || "");
     formData.append("avatar", avatar);
     formData.append("resume", resume);
@@ -239,12 +239,12 @@ const UpdateProfile = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label>Twitter(X) URL</Label>
+                <Label>Discord URL</Label>
                 <Input
                   type="text"
-                  className="Twitter(X) URL"
-                  value={twitterURL}
-                  onChange={(e) => setTwitterURL(e.target.value)}
+                  className="Discord URL"
+                  value={discordURL}
+                  onChange={(e) => setDiscordURL(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">

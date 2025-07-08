@@ -84,10 +84,10 @@ const Profile = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label>Twitter(X) URL</Label>
+                <Label>Discord URL</Label>
                 <Input 
                   type="text" 
-                  defaultValue={user.twitterURL && user.twitterURL !== "undefined" ? user.twitterURL : ""} 
+                  defaultValue={user.discordURL && user.discordURL !== "undefined" ? user.discordURL : ""} 
                   disabled 
                 />
               </div>
