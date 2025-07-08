@@ -235,8 +235,23 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
-  const id = "685c094250254eda067dcc41";
-  const user = await User.findById(id);
+  // If a specific portfolio user ID is provided via environment variable, use that.
+  // Otherwise, return the first user found in the database. This makes the
+  // endpoint resilient in environments where the hard-coded ID does not exist.
+
+  const { PORTFOLIO_USER_ID } = process.env;
+
+  let user;
+  if (PORTFOLIO_USER_ID) {
+    user = await User.findById(PORTFOLIO_USER_ID);
+  } else {
+    user = await User.findOne();
+  }
+
+  if (!user) {
+    return next(new ErrorHandler("Portfolio user not found", 404));
+  }
+
   res.status(200).json({
     success: true,
     user,
