@@ -126,43 +126,43 @@ const Hero = () => {
       items-center mt-4 md:mt-8 lg:mt-10">
         {/* Fixed: Using cleaned URLs */}
         {cleanInstagramURL && (
-          <Link to={cleanInstagramURL} target="_blank">
+          <a href={cleanInstagramURL} target="_blank" rel="noopener noreferrer">
             <Instagram className="text-pink-500 w-7 h-7" />
-          </Link>
+          </a>
         )}
         {cleanLinkedInURL && (
-          <Link to={cleanLinkedInURL} target="_blank">
+          <a href={cleanLinkedInURL} target="_blank" rel="noopener noreferrer">
             <Linkedin className="text-sky-500 w-7 h-7" />
-          </Link>
+          </a>
         )}
         {cleanDiscordURL && (
-          <Link to={cleanDiscordURL} target="_blank">
+          <a href={cleanDiscordURL} target="_blank" rel="noopener noreferrer">
             <Send className="text-indigo-500 w-7 h-7" />
-          </Link>
+          </a>
         )}
       </div>
       <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
         {/* Fixed: Using cleaned GitHub URL */}
         {cleanGithubURL && (
-          <Link to={cleanGithubURL} target="_blank">
+          <a href={cleanGithubURL} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <Github />
               </span>
               <span>Github</span>
             </Button>
-          </Link>
+          </a>
         )}
         {/* Fixed: Resume URL check */}
         {resume?.url && (
-          <Link to={resume.url} target="_blank">
+          <a href={resume.url} target="_blank" rel="noopener noreferrer">
             <Button className="rounded-[30px] flex items-center gap-2 flex-row">
               <span>
                 <ExternalLink />
               </span>
               <span>Resume</span>
             </Button>
-          </Link>
+          </a>
         )}
       </div>
       <p className="mt-8 text-xl tracking-[2px]">{aboutMe}</p>
