@@ -30,7 +30,7 @@ const Portfolio = () => {
         >
           MY{" "}
           <span className="text-tubeLight-effect font-extrabold">
-            PORTFOLIO
+            PROJECTS
           </span>
         </h1>
         <h1
