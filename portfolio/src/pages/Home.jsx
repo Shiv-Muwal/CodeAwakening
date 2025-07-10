@@ -7,10 +7,12 @@ import About from "./miniComponents/About";
 import { ThemeProvider } from "@/components/theme-provider";
 import Portfolio from "./miniComponents/Portfolio";
 import Contact from "./miniComponents/Contact";
+import Navbar from "./miniComponents/Navbar";
 
 const Home = () => {
   return (
-    <article className="px-5 mt-10 sm:mt-14 md:mt-16 lg:mt-24 xl:mt-32 sm:mx-auto w-full max-w-[1050px] flex flex-col gap-14">
+    <article className=" font-Libre overflow-hidden">
+      <Navbar/>
       <Hero />
       <Timeline />
       <About />

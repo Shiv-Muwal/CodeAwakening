@@ -8,17 +8,6 @@
   background: linear-gradient(#642bff, #ff22e6);
   border-radius: 7px;
 }
-.text-tubeLight-effect {
-  display: flex;
-  color: #fff;
-  position: relative;
-  text-transform: uppercase;
-  width: 100%;
-  outline: none;
-  overflow-y: hidden;
-  /* -webkit-box-reflect: below -27px linear-gradient(transparent, #ffffff40); */
-  animation: animate 5s linear infinite;
-}
 @keyframes animate {
   0%,
   18%,

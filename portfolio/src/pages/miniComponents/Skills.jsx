@@ -15,8 +15,8 @@ const Skills = () => {
     getMySkills();
   }, []);
   return (
-    <div className="w-full flex flex-col gap-8 sm:gap-12">
-      <h1 className="text-tubeLight-effect text-[2rem] sm:text-[2.75rem] md:text-[3rem] 
+    <div className="w-full flex flex-col gap-8 sm:gap-12 container">
+      <h1 className="text-[2rem] sm:text-[2.75rem] md:text-[3rem] 
       lg:text-[3.8rem] tracking-[15px] mx-auto w-fit">
         SKILLS
       </h1>

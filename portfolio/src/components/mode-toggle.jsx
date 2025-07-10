@@ -13,7 +13,7 @@ export function ModeToggle() {
   const { setTheme } = useTheme();
 
   return (
-    <div className="px-5 sm:mx-auto w-full max-w-[1050px] text-end mt-10 mb-5">
+    <div className="">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="icon">
@@ -28,9 +28,6 @@ export function ModeToggle() {
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setTheme("dark")}>
             Dark
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setTheme("system")}>
-            System
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

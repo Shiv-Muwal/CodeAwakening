@@ -36,8 +36,7 @@ const Contact = () => {
   };
   return (
     <>
-      <div className="overflow-x-hidden">
-        <div className="relative mb-8">
+      <div className="overflow-x-hidden container">
           <h1
             className="flex gap-4 items-center text-[1.85rem] sm:text-[2.75rem] md:text-[3rem] 
             lg:text-[3rem] leading-[56px] md:leading-[67px] lg:leading-[90px] 
@@ -46,12 +45,8 @@ const Contact = () => {
               background: "hsl(222.2 84% 4.9%)",
             }}
           >
-            CONTACT
-            <span className="text-tubeLight-effect font-extrabold">ME</span>
+            CONTACT ME
           </h1>
-          <span className="absolute w-full h-1 top-7 sm:top-7 
-          md:top-8 lg:top-11 z-[-1] bg-slate-200"></span>
-        </div>
         <form onSubmit={handleMessage} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2 px-1.5">
             <Label className="text-xl">Your Name</Label>

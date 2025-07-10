@@ -2,20 +2,14 @@ import React, { useEffect, useState } from "react";
 
 const About = () => {
   return (
-    <div className="w-full flex flex-col overflow-x-hidden">
-      <div className="relative">
+    <div className="w-full flex flex-col overflow-x-hidden container">
         <h1
           className="flex gap-4 items-center text-[2rem] sm:text-[2.75rem] 
           md:text-[3rem] lg:text-[3.8rem] leading-[56px] md:leading-[67px] 
           lg:leading-[90px] tracking-[15px] mx-auto w-fit font-extrabold about-h1"
-          style={{
-            background: "hsl(222.2 84% 4.9%)",
-          }}
         >
-          ABOUT <span className="text-tubeLight-effect font-extrabold">ME</span>
+          ABOUT ME
         </h1>
-        <span className="absolute w-full h-1 top-7 sm:top-7 md:top-8 lg:top-11 z-[-1] bg-slate-200"></span>
-      </div>
       <div className="text-center">
         <p className="uppercase text-xl text-slate-400">
           Allow me to introduce myself.

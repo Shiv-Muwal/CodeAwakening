@@ -12,7 +12,6 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <Router>
-        {/* <ModeToggle /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectView />} />

@@ -39,7 +39,7 @@ const Hero = () => {
 
   if (loading) {
     return (
-      <div className="w-full">
+      <div className="w-full container">
         <div className="flex items-center gap-2 mb-2">
           <span className="bg-gray-400 rounded-full h-2 w-2"></span>
           <p>Loading...</p>
@@ -55,7 +55,7 @@ const Hero = () => {
 
   if (error) {
     return (
-      <div className="w-full">
+      <div className="w-full container">
         <div className="flex items-center gap-2 mb-2">
           <span className="bg-red-400 rounded-full h-2 w-2"></span>
           <p>Error loading profile</p>
@@ -99,7 +99,7 @@ const Hero = () => {
   const cleanDiscordURL = cleanURL(discordURL);
 
   return (
-    <div className="w-full">
+    <div className="w-full container">
       <div className="flex items-center gap-2 mb-2">
         <span className="bg-green-400 rounded-full h-2 w-2"></span>
         <p>Online</p>
@@ -108,7 +108,7 @@ const Hero = () => {
       md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
         Hey, I'm Shivdayal Singh
       </h1>
-      <h1 className="text-tubeLight-effect overflow-x-hidden text-[1.3rem] 
+      <h1 className="overflow-x-hidden text-[1.3rem] 
       sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
         <Typewriter
           words={["FULLSTACK DEVELOPER",

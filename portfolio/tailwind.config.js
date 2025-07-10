@@ -12,11 +12,31 @@ module.exports = {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+         screens: {
+          sm: "540px",
+          md: "720px",
+          lg: "960px",
+          xl: "1188px",
+        },
+        padding: {
+          DEFAULT: "12px",
+        },
     },
     extend: {
+      fontFamily:{
+        'Libre':"'Libre Caslon Text', serif",
+      },
+          screens: {
+        'sm': '576px',
+
+        'md': '768px',
+
+        'lg': '992px',
+
+        'xl': '1200px',
+
+        '2xl': '1400px',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
