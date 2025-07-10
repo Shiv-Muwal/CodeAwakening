@@ -20,9 +20,9 @@ const Portfolio = () => {
   return (
     <div className="container">
         <h1
-          className="flex gap-4 items-center text-[2rem] sm:text-[2.75rem] 
+          className="text-[2rem] sm:text-[2.75rem] 
           md:text-[3rem] lg:text-[3.8rem] leading-[56px] md:leading-[67px] lg:leading-[90px] 
-          tracking-[15px] mx-auto w-fit about-h1"
+          tracking-[15px] text-center"
         >
           MY WORK
         </h1>

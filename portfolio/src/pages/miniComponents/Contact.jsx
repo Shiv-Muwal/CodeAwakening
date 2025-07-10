@@ -38,12 +38,9 @@ const Contact = () => {
     <>
       <div className="overflow-x-hidden container">
           <h1
-            className="flex gap-4 items-center text-[1.85rem] sm:text-[2.75rem] md:text-[3rem] 
+            className="text-[1.85rem] sm:text-[2.75rem] md:text-[3rem] 
             lg:text-[3rem] leading-[56px] md:leading-[67px] lg:leading-[90px] 
-            tracking-[15px] mx-auto w-fit font-extrabold about-h1"
-            style={{
-              background: "hsl(222.2 84% 4.9%)",
-            }}
+            tracking-[15px] text-center"
           >
             CONTACT ME
           </h1>
