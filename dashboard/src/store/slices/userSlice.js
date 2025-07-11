@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const userSlice = createSlice({
   name: "user",
@@ -110,7 +111,7 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(userSlice.actions.loginRequest());
   try {
     const { data } = await axios.post(
-      "https://codeawakening.onrender.com/api/v1/user/login",
+      API_ENDPOINTS.USER_LOGIN,
       { email, password },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -124,7 +125,7 @@ export const login = (email, password) => async (dispatch) => {
 export const getUser = () => async (dispatch) => {
   dispatch(userSlice.actions.loadUserRequest());
   try {
-    const { data } = await axios.get("https://codeawakening.onrender.com/api/v1/user/me", {
+    const { data } = await axios.get(API_ENDPOINTS.USER_ME, {
       withCredentials: true,
     });
     dispatch(userSlice.actions.loadUserSuccess(data.user));
@@ -137,7 +138,7 @@ export const getUser = () => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      "https://codeawakening.onrender.com/api/v1/user/logout",
+      API_ENDPOINTS.USER_LOGOUT,
       { withCredentials: true }
     );
     dispatch(userSlice.actions.logoutSuccess(data.message));
@@ -152,7 +153,7 @@ export const updatePassword =
     dispatch(userSlice.actions.updatePasswordRequest());
     try {
       const { data } = await axios.put(
-        "https://codeawakening.onrender.com/api/v1/user/password/update",
+        API_ENDPOINTS.USER_UPDATE_PASSWORD,
         { currentPassword, newPassword, confirmNewPassword },
         {
           withCredentials: true,
@@ -172,7 +173,7 @@ export const updateProfile = (data) => async (dispatch) => {
   dispatch(userSlice.actions.updateProfileRequest());
   try {
     const response = await axios.put(
-      "https://codeawakening.onrender.com/api/v1/user/me/profile/update",
+      API_ENDPOINTS.USER_UPDATE_PROFILE,
       data,
       {
         withCredentials: true,

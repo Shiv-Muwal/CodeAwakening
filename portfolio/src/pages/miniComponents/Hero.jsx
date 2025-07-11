@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const Hero = () => {
   const [user, setUser] = useState(null);
@@ -33,7 +34,7 @@ const Hero = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          "https://codeawakening.onrender.com/api/v1/user/me/portfolio",
+          API_ENDPOINTS.USER_PORTFOLIO,
           { withCredentials: true }
         );
         setUser(data.user);

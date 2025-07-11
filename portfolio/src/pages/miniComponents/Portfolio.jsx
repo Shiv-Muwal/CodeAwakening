@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Folder, ExternalLink, Github, Calendar, ArrowRight, Eye } from "lucide-react";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const Portfolio = () => {
   const [viewAll, setViewAll] = useState(false);
@@ -38,7 +39,7 @@ const Portfolio = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          "https://codeawakening.onrender.com/api/v1/project/getall",
+          API_ENDPOINTS.PROJECTS_GET_ALL,
           { withCredentials: true }
         );
         setProjects(data.projects);

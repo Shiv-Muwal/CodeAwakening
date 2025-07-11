@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const skillSlice = createSlice({
   name: "skill",
@@ -84,7 +85,7 @@ export const getAllSkills = () => async (dispatch) => {
   dispatch(skillSlice.actions.getAllSkillsRequest());
   try {
     const response = await axios.get(
-      "https://codeawakening.onrender.com/api/v1/skill/getall",
+      API_ENDPOINTS.SKILLS_GET_ALL,
       { withCredentials: true }
     );
     dispatch(skillSlice.actions.getAllSkillsSuccess(response.data.skills));
@@ -100,7 +101,7 @@ export const addNewSkill = (data) => async (dispatch) => {
   dispatch(skillSlice.actions.addNewSkillRequest());
   try {
     const response = await axios.post(
-      "https://codeawakening.onrender.com/api/v1/skill/add",
+      API_ENDPOINTS.SKILL_ADD,
       data,
       {
         withCredentials: true,
@@ -120,7 +121,7 @@ export const updateSkill = (id, proficiency) => async (dispatch) => {
   dispatch(skillSlice.actions.updateSkillRequest());
   try {
     const response = await axios.put(
-      `https://codeawakening.onrender.com/api/v1/skill/update/${id}`,
+      API_ENDPOINTS.SKILL_UPDATE(id),
       { proficiency },
       {
         withCredentials: true,
@@ -138,7 +139,7 @@ export const deleteSkill = (id) => async (dispatch) => {
   dispatch(skillSlice.actions.deleteSkillRequest());
   try {
     const response = await axios.delete(
-      `https://codeawakening.onrender.com/api/v1/skill/delete/${id}`,
+      API_ENDPOINTS.SKILL_DELETE(id),
       {
         withCredentials: true,
       }

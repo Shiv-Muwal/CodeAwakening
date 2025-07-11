@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const softwareApplicationSlice = createSlice({
   name: "softwareApplications",
@@ -71,7 +72,7 @@ export const getAllSoftwareApplications = () => async (dispatch) => {
   );
   try {
     const response = await axios.get(
-      "https://codeawakening.onrender.com/api/v1/softwareapplication/getall",
+      API_ENDPOINTS.SOFTWARE_APPS_GET_ALL,
       { withCredentials: true }
     );
     dispatch(
@@ -95,7 +96,7 @@ export const addNewSoftwareApplication = (data) => async (dispatch) => {
   );
   try {
     const response = await axios.post(
-      "https://codeawakening.onrender.com/api/v1/softwareapplication/add",
+      API_ENDPOINTS.SOFTWARE_APP_ADD,
       data,
       {
         withCredentials: true,
@@ -123,7 +124,7 @@ export const deleteSoftwareApplication = (id) => async (dispatch) => {
   );
   try {
     const response = await axios.delete(
-      `https://codeawakening.onrender.com/api/v1/softwareapplication/delete/${id}`,
+      API_ENDPOINTS.SOFTWARE_APP_DELETE(id),
       {
         withCredentials: true,
       }

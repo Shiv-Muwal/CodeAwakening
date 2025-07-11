@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { TimelineDots } from "../common/Icon";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const Timeline = () => {
   const [timeline, setTimeline] = useState([]);
   useEffect(() => {
     const getMyTimeline = async () => {
       const { data } = await axios.get(
-        "https://codeawakening.onrender.com/api/v1/timeline/getall",
+        API_ENDPOINTS.TIMELINE_GET_ALL,
         { withCredentials: true }
       );
       setTimeline(data.timelines);

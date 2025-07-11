@@ -20,6 +20,7 @@ import {
   updateProject,
 } from "@/store/slices/projectSlice";
 import { Button } from "@/components/ui/button";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const UpdateProject = () => {
   const [title, setTitle] = useState("");
@@ -49,7 +50,7 @@ const UpdateProject = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`https://codeawakening.onrender.com/api/v1/project/get/${id}`, {
+        .get(API_ENDPOINTS.PROJECT_GET(id), {
           withCredentials: true,
         })
         .then((res) => {

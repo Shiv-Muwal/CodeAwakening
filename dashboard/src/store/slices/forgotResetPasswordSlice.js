@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const forgotResetPassSlice = createSlice({
   name: "forgotPassword",
@@ -50,7 +51,7 @@ export const forgotPassword = (email) => async (dispatch) => {
     dispatch(forgotResetPassSlice.actions.forgotPasswordRequest());
     console.log(email);
     const response = await axios.post(
-      "https://codeawakening.onrender.com/api/v1/user/password/forgot",
+      API_ENDPOINTS.USER_FORGOT_PASSWORD,
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
@@ -73,7 +74,7 @@ export const resetPassword =
     try {
       dispatch(forgotResetPassSlice.actions.resetPasswordRequest());
       const response = await axios.put(
-        ` https://codeawakening.onrender.com/api/v1/user/password/reset/${token}`,
+        API_ENDPOINTS.USER_RESET_PASSWORD(token),
         { password, confirmPassword },
         {
           withCredentials: true,

@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Code2, Zap, Star, TrendingUp } from "lucide-react";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
@@ -35,7 +36,7 @@ const Skills = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          "https://codeawakening.onrender.com/api/v1/skill/getall",
+          API_ENDPOINTS.SKILLS_GET_ALL,
           { withCredentials: true }
         );
         setSkills(data.skills);

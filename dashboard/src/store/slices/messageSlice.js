@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const messageSlice = createSlice({
   name: "messages",
@@ -54,7 +55,7 @@ const messageSlice = createSlice({
 export const getAllMessages = () => async (dispatch) => {
   dispatch(messageSlice.actions.getAllMessagesRequest());
   try {
-    const { data } = await axios.get("https://codeawakening.onrender.com/api/v1/message/getall", {
+    const { data } = await axios.get(API_ENDPOINTS.MESSAGES_GET_ALL, {
       withCredentials: true,
     });
     dispatch(messageSlice.actions.getAllMessagesSuccess(data.messages));
@@ -69,7 +70,7 @@ export const getAllMessages = () => async (dispatch) => {
 export const deleteMessage = (id) => async (dispatch) => {
   dispatch(messageSlice.actions.deleteMessageRequest());
   try {
-    const { data } = await axios.delete(`https://codeawakening.onrender.com/api/v1/message/delete/${id}`, {
+    const { data } = await axios.delete(API_ENDPOINTS.MESSAGE_DELETE(id), {
       withCredentials: true,
     });
     dispatch(messageSlice.actions.deleteMessageSuccess(data.message));

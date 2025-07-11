@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const projectSlice = createSlice({
   name: "project",
@@ -85,7 +86,7 @@ export const getAllProjects = () => async (dispatch) => {
   dispatch(projectSlice.actions.getAllProjectsRequest());
   try {
     const response = await axios.get(
-      "https://codeawakening.onrender.com/api/v1/project/getall",
+      API_ENDPOINTS.PROJECTS_GET_ALL,
       { withCredentials: true }
     );
     dispatch(
@@ -103,7 +104,7 @@ export const addNewProject = (data) => async (dispatch) => {
   dispatch(projectSlice.actions.addNewProjectRequest());
   try {
     const response = await axios.post(
-      "https://codeawakening.onrender.com/api/v1/project/add",
+      API_ENDPOINTS.PROJECT_ADD,
       data,
       {
         withCredentials: true,
@@ -122,7 +123,7 @@ export const deleteProject = (id) => async (dispatch) => {
   dispatch(projectSlice.actions.deleteProjectRequest());
   try {
     const response = await axios.delete(
-      `https://codeawakening.onrender.com/api/v1/project/delete/${id}`,
+      API_ENDPOINTS.PROJECT_DELETE(id),
       {
         withCredentials: true,
       }
@@ -139,7 +140,7 @@ export const updateProject = (id, newData) => async (dispatch) => {
   dispatch(projectSlice.actions.updateProjectRequest());
   try {
     const response = await axios.put(
-      `https://codeawakening.onrender.com/api/v1/project/update/${id}`,
+      API_ENDPOINTS.PROJECT_UPDATE(id),
       newData,
       {
         withCredentials: true,

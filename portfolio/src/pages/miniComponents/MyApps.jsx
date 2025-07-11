@@ -1,13 +1,14 @@
 import { Card } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const MyApps = () => {
   const [apps, setApps] = useState([]);
   useEffect(() => {
     const getMyApps = async () => {
       const { data } = await axios.get(
-        "https://codeawakening.onrender.com/api/v1/softwareapplication/getall",
+        API_ENDPOINTS.SOFTWARE_APPS_GET_ALL,
         { withCredentials: true }
       );
       setApps(data.softwareApplications);

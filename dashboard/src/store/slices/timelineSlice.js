@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const timelineSlice = createSlice({
   name: "timeline",
@@ -69,7 +70,7 @@ export const getAllTimeline = () => async (dispatch) => {
   dispatch(timelineSlice.actions.getAllTimelineRequest());
   try {
     const response = await axios.get(
-      "https://codeawakening.onrender.com/api/v1/timeline/getall",
+      API_ENDPOINTS.TIMELINE_GET_ALL,
       { withCredentials: true }
     );
     dispatch(
@@ -87,7 +88,7 @@ export const addNewTimeline = (data) => async (dispatch) => {
   dispatch(timelineSlice.actions.addNewTimelineRequest());
   try {
     const response = await axios.post(
-      "https://codeawakening.onrender.com/api/v1/timeline/add",
+      API_ENDPOINTS.TIMELINE_ADD,
       data,
       {
         withCredentials: true,
@@ -108,7 +109,7 @@ export const deleteTimeline = (id) => async (dispatch) => {
   dispatch(timelineSlice.actions.deleteTimelineRequest());
   try {
     const response = await axios.delete(
-      `https://codeawakening.onrender.com/api/v1/timeline/delete/${id}`,
+      API_ENDPOINTS.TIMELINE_DELETE(id),
       {
         withCredentials: true,
       }

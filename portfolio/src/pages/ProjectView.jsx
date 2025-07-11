@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import { API_ENDPOINTS } from "@/utils/api";
 
 const ProjectView = () => {
   const [title, setTitle] = useState("");
@@ -19,7 +20,7 @@ const ProjectView = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`https://codeawakening.onrender.com/api/v1/project/get/${id}`, {
+        .get(API_ENDPOINTS.PROJECT_GET(id), {
           withCredentials: true,
         })
         .then((res) => {
