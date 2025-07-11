@@ -29,24 +29,23 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    const getMyProfile = async () => {
-      try {
-        setLoading(true);
-        const { data } = await axios.get(
-          "https://codeawakening.onrender.com/api/v1/user/me/portfolio",
-          { withCredentials: true }
-        );
-        setUser(data.user);
-        setError(null);
-      } catch (err) {
-        console.error("Error fetching user profile:", err);
-        setError("Failed to load profile data");
-        setUser(null);
-      } finally {
-        setLoading(false);
+    // For now, use static data instead of API call
+    const staticUserData = {
+      instagramURL: "https://instagram.com/your-profile",
+      linkedInURL: "https://linkedin.com/in/your-profile", 
+      githubURL: "https://github.com/your-profile",
+      discordURL: "https://discord.com/users/your-profile",
+      aboutMe: "I'm a passionate full-stack developer with expertise in modern web technologies. I love creating innovative solutions and building amazing user experiences.",
+      resume: {
+        url: "/resume.pdf"
       }
     };
-    getMyProfile();
+    
+    // Simulate loading
+    setTimeout(() => {
+      setUser(staticUserData);
+      setLoading(false);
+    }, 1000);
   }, []);
 
   if (loading) {
