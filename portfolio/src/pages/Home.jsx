@@ -11,13 +11,13 @@ import Navbar from "./miniComponents/Navbar";
 
 const Home = () => {
   return (
-    <article className=" font-Libre overflow-hidden">
+    <article className="min-h-screen font-inter overflow-hidden">
       <Navbar/>
       <Hero />
-      <Timeline />
       <About />
       <Skills />
       <Portfolio />
+      <Timeline />
       <MyApps />
       <Contact />
     </article>
