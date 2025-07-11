@@ -183,12 +183,14 @@ const Skills = () => {
                   </div>
                 </div>
                 
-                // Update the skill card
-                <div
-                  key={skill._id}
-                  className={`group modern-card p-4 sm:p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
-                  style={{ animationDelay: `${categoryIndex * 0.2 + index * 0.1}s` }}
-                >
+                {/* Skills grid */}
+                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                  {categorySkills.map((skill, index) => (
+                    <div
+                      key={skill._id}
+                      className={`group modern-card p-4 sm:p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                      style={{ animationDelay: `${categoryIndex * 0.2 + index * 0.1}s` }}
+                    >
                   <div className="relative mb-3 sm:mb-4">
                     <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300"></div>
                     <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-white dark:bg-gray-800 rounded-2xl p-2 sm:p-3 shadow-lg group-hover:shadow-glow transition-all duration-300">
@@ -202,11 +204,12 @@ const Skills = () => {
                   <h4 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-gradient transition-colors duration-300">
                     {skill.title}
                   </h4>
+                  {/* Hover effect overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gradient-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                 </div>
-
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gradient-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-              </div>
+              ))}
+            </div>
+          </div>
             );
           })}
 
