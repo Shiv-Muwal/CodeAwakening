@@ -35,7 +35,7 @@ const Skills = () => {
       try {
         setLoading(true);
         const { data } = await axios.get(
-          "https://codeawakening.onrender.com/api/v1/skill/getall",
+          "http://localhost:4000/api/v1/unified-skills/getall",
           { withCredentials: true }
         );
         setSkills(data.skills);
@@ -49,7 +49,7 @@ const Skills = () => {
     getMySkills();
   }, []);
 
-  // Skill categories for better organization
+  // Skill categories for better organization using unified system
   const categorizeSkills = (skills) => {
     const categories = {
       frontend: [],
@@ -60,20 +60,24 @@ const Skills = () => {
     };
 
     skills.forEach(skill => {
-      const title = skill.title.toLowerCase();
-      if (title.includes('react') || title.includes('vue') || title.includes('angular') || 
-          title.includes('html') || title.includes('css') || title.includes('javascript') ||
-          title.includes('typescript') || title.includes('tailwind') || title.includes('next')) {
+      // Use the new unified system's category field first, then fallback to name-based logic
+      const skillName = (skill.name || skill.title || '').toLowerCase();
+      const skillCategory = skill.category || '';
+      
+      if (skillCategory === 'programming' || skillName.includes('react') || skillName.includes('vue') || skillName.includes('angular') || 
+          skillName.includes('html') || skillName.includes('css') || skillName.includes('javascript') ||
+          skillName.includes('typescript') || skillName.includes('tailwind') || skillName.includes('next')) {
         categories.frontend.push(skill);
-      } else if (title.includes('node') || title.includes('python') || title.includes('express') ||
-                 title.includes('django') || title.includes('flask') || title.includes('php') ||
-                 title.includes('java') || title.includes('spring')) {
+      } else if (skillName.includes('node') || skillName.includes('python') || skillName.includes('express') ||
+                 skillName.includes('django') || skillName.includes('flask') || skillName.includes('php') ||
+                 skillName.includes('java') || skillName.includes('spring')) {
         categories.backend.push(skill);
-      } else if (title.includes('mongo') || title.includes('mysql') || title.includes('postgres') ||
-                 title.includes('redis') || title.includes('firebase')) {
+      } else if (skillCategory === 'database' || skillName.includes('mongo') || skillName.includes('mysql') || skillName.includes('postgres') ||
+                 skillName.includes('redis') || skillName.includes('firebase')) {
         categories.database.push(skill);
-      } else if (title.includes('git') || title.includes('docker') || title.includes('aws') ||
-                 title.includes('vercel') || title.includes('figma') || title.includes('vscode')) {
+      } else if (skillCategory === 'devops' || skill.type === 'tool' || skill.type === 'software_application' ||
+                 skillName.includes('git') || skillName.includes('docker') || skillName.includes('aws') ||
+                 skillName.includes('vercel') || skillName.includes('figma') || skillName.includes('vscode')) {
         categories.tools.push(skill);
       } else {
         categories.other.push(skill);
@@ -194,13 +198,13 @@ const Skills = () => {
                     <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-white dark:bg-gray-800 rounded-2xl p-2 sm:p-3 shadow-lg group-hover:shadow-glow transition-all duration-300">
                       <img
                         src={skill.svg && skill.svg.url}
-                        alt={skill.title}
+                        alt={skill.name || skill.title}
                         className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>
                   </div>
                   <h4 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-gradient transition-colors duration-300">
-                    {skill.title}
+                    {skill.name || skill.title}
                   </h4>
                   {/* Hover effect overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-gradient-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
@@ -239,13 +243,13 @@ const Skills = () => {
                       <div className="relative w-16 h-16 mx-auto bg-white dark:bg-gray-800 rounded-2xl p-3 shadow-lg group-hover:shadow-glow transition-all duration-300">
                         <img
                           src={skill.svg && skill.svg.url}
-                          alt={skill.title}
+                          alt={skill.name || skill.title}
                           className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
                     </div>
                     <h4 className="font-semibold text-foreground group-hover:text-gradient transition-colors duration-300">
-                      {skill.title}
+                      {skill.name || skill.title}
                     </h4>
                     <div className="absolute inset-0 bg-gradient-to-t from-gradient-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                   </div>
