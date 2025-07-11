@@ -164,23 +164,26 @@ const Portfolio = () => {
                       </p>
 
                       {/* Tech stack (if available) */}
-                      {project.technologies && project.technologies.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                            <span 
-                              key={techIndex}
-                              className="bg-gradient-to-r from-gradient-primary/10 to-gradient-secondary/10 text-gradient-primary text-xs px-2 py-1 rounded-md font-medium border border-gradient-primary/20"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                          {project.technologies.length > 3 && (
-                            <span className="text-muted-foreground text-xs px-2 py-1">
-                              +{project.technologies.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                      )}
+                      {project.technologies && project.technologies.length > 0 && (() => {
+                        const technologiesList = project.technologies.split(", ");
+                        return (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {technologiesList.slice(0, 3).map((tech, techIndex) => (
+                              <span 
+                                key={techIndex}
+                                className="bg-gradient-to-r from-gradient-primary/10 to-gradient-secondary/10 text-gradient-primary text-xs px-2 py-1 rounded-md font-medium border border-gradient-primary/20"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                            {technologiesList.length > 3 && (
+                              <span className="text-muted-foreground text-xs px-2 py-1">
+                                +{technologiesList.length - 3} more
+                              </span>
+                            )}
+                          </div>
+                        );
+                      })()}
 
                       {/* Action buttons */}
                       <div className="flex items-center gap-3">
