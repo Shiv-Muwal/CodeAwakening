@@ -4,6 +4,8 @@ import {
   Instagram,
   Linkedin,
   Send,
+  Sparkles,
+  Download,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -15,6 +17,16 @@ const Hero = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const getMyProfile = async () => {
@@ -39,15 +51,20 @@ const Hero = () => {
 
   if (loading) {
     return (
-      <div className="w-full container">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="bg-gray-400 rounded-full h-2 w-2"></span>
-          <p>Loading...</p>
-        </div>
-        <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-          <div className="h-8 bg-gray-200 rounded w-2/3 mb-8"></div>
-          <div className="h-16 bg-gray-200 rounded w-full"></div>
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gradient-primary via-gradient-secondary to-gradient-accent opacity-10"></div>
+        
+        <div className="w-full container relative z-10">
+          <div className="flex items-center gap-3 mb-6 animate-pulse">
+            <div className="bg-gradient-to-r from-green-400 to-blue-500 rounded-full h-3 w-3 animate-bounce"></div>
+            <p className="text-lg font-medium">Loading your portfolio...</p>
+          </div>
+          <div className="space-y-6">
+            <div className="h-16 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl animate-pulse"></div>
+            <div className="h-12 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-xl animate-pulse w-3/4"></div>
+            <div className="h-32 bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl animate-pulse"></div>
+          </div>
         </div>
       </div>
     );
@@ -55,19 +72,24 @@ const Hero = () => {
 
   if (error) {
     return (
-      <div className="w-full container">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="bg-red-400 rounded-full h-2 w-2"></span>
-          <p>Error loading profile</p>
-        </div>
-        <div className="text-red-500">
-          <p>{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-          >
-            Retry
-          </button>
+      <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-yellow-500/10"></div>
+        
+        <div className="w-full container relative z-10 text-center">
+          <div className="modern-card p-8 max-w-md mx-auto">
+            <div className="flex items-center gap-3 mb-4 justify-center">
+              <span className="bg-red-500 rounded-full h-3 w-3 animate-pulse"></span>
+              <p className="text-lg font-medium text-red-500">Connection Error</p>
+            </div>
+            <p className="text-red-400 mb-6">{error}</p>
+            <Button
+              onClick={() => window.location.reload()}
+              className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white border-0 px-8 py-3 rounded-xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-glow"
+            >
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Retry Loading
+            </Button>
+          </div>
         </div>
       </div>
     );
@@ -99,74 +121,150 @@ const Hero = () => {
   const cleanDiscordURL = cleanURL(discordURL);
 
   return (
-    <div className="w-full container">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="bg-green-400 rounded-full h-2 w-2"></span>
-        <p>Online</p>
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-hero-pattern">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-full opacity-10 blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-gradient-accent to-gradient-pink rounded-full opacity-10 blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gradient-to-r from-gradient-blue to-gradient-cyan rounded-full opacity-5 blur-3xl animate-float" style={{ animationDelay: '4s' }}></div>
       </div>
-      <h1 className="overflow-x-hidden text-[1.3rem] sm:text-[1.75rem] 
-      md:text-[2.2rem] lg:text-[2.8rem] tracking-[2px] mb-4">
-        Hey, I'm Shivdayal Singh
-      </h1>
-      <h1 className="overflow-x-hidden text-[1.3rem] 
-      sm:text-[1.75rem] md:text-[2.2rem] lg:text-[2.8rem] tracking-[15px]">
-        <Typewriter
-          words={["FULLSTACK DEVELOPER",
-            "FRONTEND SPECIALIST",
-            "DEVELOPMENT ENTHUSIAST",
-            "DEDICATED CODER"]}
-          loop={50}
-          cursor
-          typeSpeed={70}
-          deleteSpeed={50}
-          delaySpeed={1000}
-        />
-      </h1>
-      <div className="w-fit px-5 py-2 bg-slate-50 rounded-[20px] flex gap-5 
-      items-center mt-4 md:mt-8 lg:mt-10">
-        {/* Fixed: Using cleaned URLs */}
-        {cleanInstagramURL && (
-          <a href={cleanInstagramURL} target="_blank" rel="noopener noreferrer">
-            <Instagram className="text-pink-500 w-7 h-7" />
-          </a>
-        )}
-        {cleanLinkedInURL && (
-          <a href={cleanLinkedInURL} target="_blank" rel="noopener noreferrer">
-            <Linkedin className="text-sky-500 w-7 h-7" />
-          </a>
-        )}
-        {cleanDiscordURL && (
-          <a href={cleanDiscordURL} target="_blank" rel="noopener noreferrer">
-            <Send className="text-indigo-500 w-7 h-7" />
-          </a>
-        )}
+
+      {/* Mouse follower effect */}
+      <div 
+        className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-gradient-primary to-gradient-secondary opacity-5 blur-3xl pointer-events-none transition-all duration-1000 ease-out"
+        style={{
+          left: mousePosition.x - 192,
+          top: mousePosition.y - 192,
+        }}
+      ></div>
+
+      <div className="w-full container relative z-10 text-center lg:text-left">
+        {/* Status indicator */}
+        <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start animate-fade-in">
+          <span className="bg-gradient-to-r from-green-400 to-emerald-500 rounded-full h-3 w-3 animate-pulse shadow-glow"></span>
+          <p className="text-lg font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+            Available for opportunities
+          </p>
+          <Sparkles className="w-5 h-5 text-green-400 animate-pulse" />
+        </div>
+
+        {/* Main heading */}
+        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight">
+            <span className="block">Hey, I'm</span>
+            <span className="block heading-primary">Shivdayal Singh</span>
+          </h1>
+        </div>
+
+        {/* Typewriter effect */}
+        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-muted-foreground tracking-wider">
+            <Typewriter
+              words={[
+                "FULLSTACK DEVELOPER",
+                "FRONTEND SPECIALIST", 
+                "DEVELOPMENT ENTHUSIAST",
+                "DEDICATED CODER"
+              ]}
+              loop={50}
+              cursor
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </h2>
+        </div>
+
+        {/* Social links */}
+        <div className="flex justify-center lg:justify-start mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <div className="modern-card p-4 flex gap-6 items-center hover-lift">
+            {cleanInstagramURL && (
+              <a 
+                href={cleanInstagramURL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
+                <Instagram className="relative text-pink-500 w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow" />
+              </a>
+            )}
+            {cleanLinkedInURL && (
+              <a 
+                href={cleanLinkedInURL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
+                <Linkedin className="relative text-sky-500 w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow" />
+              </a>
+            )}
+            {cleanDiscordURL && (
+              <a 
+                href={cleanDiscordURL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
+                <Send className="relative text-indigo-500 w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow" />
+              </a>
+            )}
+          </div>
+        </div>
+
+        {/* Action buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+          {cleanGithubURL && (
+            <a href={cleanGithubURL} target="_blank" rel="noopener noreferrer">
+              <Button className="group relative overflow-hidden bg-gradient-to-r from-gradient-primary to-gradient-secondary hover:from-gradient-secondary hover:to-gradient-accent text-white border-0 px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg w-full sm:w-auto">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Github className="w-5 h-5 mr-3 relative z-10" />
+                <span className="relative z-10">View GitHub</span>
+              </Button>
+            </a>
+          )}
+          {resume?.url && (
+            <a href={resume.url} target="_blank" rel="noopener noreferrer">
+              <Button className="group relative overflow-hidden bg-transparent border-2 border-gradient-primary hover:bg-gradient-to-r hover:from-gradient-primary hover:to-gradient-secondary hover:border-transparent text-gradient-primary hover:text-white px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg w-full sm:w-auto">
+                <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Download className="w-5 h-5 mr-3 relative z-10" />
+                <span className="relative z-10">Download Resume</span>
+              </Button>
+            </a>
+          )}
+        </div>
+
+        {/* About description */}
+        <div className="max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '1s' }}>
+          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light">
+            {aboutMe}
+          </p>
+        </div>
+
+        {/* Decorative gradient line */}
+        <div className="mt-16 animate-fade-in" style={{ animationDelay: '1.2s' }}>
+          <div className="h-1 w-full bg-gradient-to-r from-transparent via-gradient-primary to-transparent rounded-full opacity-50"></div>
+        </div>
       </div>
-      <div className="mt-4 md:mt-8 lg:mt-10 flex gap-3">
-        {/* Fixed: Using cleaned GitHub URL */}
-        {cleanGithubURL && (
-          <a href={cleanGithubURL} target="_blank" rel="noopener noreferrer">
-            <Button className="rounded-[30px] flex items-center gap-2 flex-row">
-              <span>
-                <Github />
-              </span>
-              <span>Github</span>
-            </Button>
-          </a>
-        )}
-        {/* Fixed: Resume URL check */}
-        {resume?.url && (
-          <a href={resume.url} target="_blank" rel="noopener noreferrer">
-            <Button className="rounded-[30px] flex items-center gap-2 flex-row">
-              <span>
-                <ExternalLink />
-              </span>
-              <span>Resume</span>
-            </Button>
-          </a>
-        )}
+
+      {/* Floating particles */}
+      <div className="particles">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              width: `${Math.random() * 6 + 2}px`,
+              height: `${Math.random() * 6 + 2}px`,
+              animationDuration: `${Math.random() * 10 + 10}s`,
+              animationDelay: `${Math.random() * 10}s`,
+            }}
+          />
+        ))}
       </div>
-      <p className="mt-8 text-xl tracking-[2px]">{aboutMe}</p>
-      <hr className="my-8 md:my-10" />
     </div>
   );
 };
