@@ -114,12 +114,11 @@ const Skills = () => {
 
   if (loading) {
     return (
-      <div id="skills-section" className="section-padding">
+      <div id="skills-section" className="py-6 md:py-8 lg:py-10">
         <div className="container">
-          <div className="text-center mb-16">
+          <div className="text-center mb-6 sm:mb-10">
             <h2 className="heading-secondary text-gradient">Skills</h2>
           </div>
-          // Update the loading state grid
           <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
             {[...Array(12)].map((_, i) => (
               <div key={i} className="modern-card p-6 animate-pulse">
@@ -134,7 +133,7 @@ const Skills = () => {
   }
 
   return (
-    <div id="skills-section" className="section-padding relative overflow-hidden">
+    <div id="skills-section" className="py-6 md:py-8 lg:py-10 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-10 w-32 h-32 bg-gradient-to-r from-gradient-blue to-gradient-cyan rounded-full opacity-10 blur-2xl"></div>
@@ -143,14 +142,14 @@ const Skills = () => {
 
       <div className="container relative z-10">
         {/* Section header */}
-        <div className={`text-center mb-8 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+        <div className={`text-center mb-6 sm:mb-10 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="inline-flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
             <Code2 className="w-6 h-6 sm:w-8 sm:h-8 text-gradient-primary" />
             <span className="text-base sm:text-lg font-medium text-muted-foreground uppercase tracking-wider">
               My Expertise
             </span>
           </div>
-          <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-6">
+          <h2 className="text-2xl sm:text-4xl font-bold mb-3 sm:mb-4">
             <span className="text-gradient">Skills & Technologies</span>
           </h2>
           <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
@@ -159,7 +158,7 @@ const Skills = () => {
         </div>
 
         {/* Skills by category */}
-        <div className="space-y-16">
+        <div className="space-y-10">
           {Object.entries(categoryConfig).map(([key, config], categoryIndex) => {
             const categorySkills = categorizedSkills[key];
             
@@ -172,8 +171,7 @@ const Skills = () => {
                 style={{ animationDelay: `${categoryIndex * 0.2}s` }}
               >
                 {/* Category header */}
-                // Update the category header
-                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
                   <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${config.color} p-3 shadow-glow`}>
                     <config.icon className="w-full h-full text-white" />
                   </div>
@@ -219,7 +217,7 @@ const Skills = () => {
               className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
               style={{ animationDelay: '0.8s' }}
             >
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-gray-500 to-gray-600 p-3 shadow-glow">
                   <Star className="w-full h-full text-white" />
                 </div>
@@ -258,7 +256,7 @@ const Skills = () => {
         </div>
 
         {/* Bottom stats or call to action */}
-        <div className={`mt-8 sm:mt-16 text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '1s' }}>
+        <div className={`mt-6 sm:mt-10 text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '1s' }}>
           <div className="modern-card p-6 sm:p-8 max-w-2xl mx-auto">
             <h3 className="text-xl sm:text-2xl font-bold text-gradient mb-3 sm:mb-4">Continuous Learning</h3>
             <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 px-2 sm:px-0">
