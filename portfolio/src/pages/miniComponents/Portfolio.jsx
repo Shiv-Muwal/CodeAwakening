@@ -85,17 +85,17 @@ const Portfolio = () => {
 
       <div className="container relative z-10">
         {/* Section header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-          <div className="inline-flex items-center gap-3 mb-6">
+        <div className={`text-center mb-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          <div className="inline-flex items-center gap-3 mb-4">
             <Folder className="w-8 h-8 text-gradient-primary" />
             <span className="text-lg font-medium text-muted-foreground uppercase tracking-wider">
               Portfolio Showcase
             </span>
           </div>
-          <h2 className="heading-secondary mb-6">
+          <h2 className="heading-secondary mb-4">
             <span className="text-gradient">My Work</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             A collection of projects that showcase my skills and creativity in web development.
           </p>
         </div>
@@ -103,7 +103,7 @@ const Portfolio = () => {
         {/* Projects grid */}
         {projects && projects.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
               {displayedProjects.map((project, index) => (
                 <Link 
                   to={`/project/${project._id}`} 
@@ -242,7 +242,7 @@ const Portfolio = () => {
         )}
 
         {/* Bottom call to action */}
-        <div className={`mt-16 text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
+        <div className={`mt-8 text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
           <div className="modern-card p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-gradient mb-4">Interested in Working Together?</h3>
             <p className="text-muted-foreground mb-6">
