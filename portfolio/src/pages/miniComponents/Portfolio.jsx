@@ -76,7 +76,7 @@ const Portfolio = () => {
   }
 
   return (
-    <div id="portfolio-section MyProject" className="py-8 md:py-12 lg:py-16 relative overflow-hidden">
+    <div id="portfolio-section" className="py-8 md:py-12 lg:py-16 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-20 w-40 h-40 bg-gradient-to-r from-gradient-accent to-gradient-pink rounded-full opacity-5 blur-3xl"></div>

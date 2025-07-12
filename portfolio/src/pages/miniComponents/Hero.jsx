@@ -120,7 +120,7 @@ const Hero = () => {
   const cleanDiscordURL = cleanURL(discordURL);
 
   return (
-    <div id="Home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-hero-pattern">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-hero-pattern">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-full opacity-10 blur-3xl animate-float"></div>
