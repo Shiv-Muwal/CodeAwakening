@@ -58,7 +58,8 @@ app.use(
       "Accept", 
       "Origin",
       "Cache-Control",
-      "X-File-Name"
+      "X-File-Name",
+      "timeout"
     ],
     credentials: true,
     optionsSuccessStatus: 200, // For legacy browser support

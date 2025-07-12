@@ -46,10 +46,9 @@ const Contact = () => {
           {
             withCredentials: true,
             headers: { 
-              "Content-Type": "application/json",
-              // Add timeout to prevent hanging requests
-              timeout: 10000
+              "Content-Type": "application/json"
             },
+            timeout: 10000
           }
         );
         
