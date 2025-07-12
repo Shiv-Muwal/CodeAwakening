@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { toast } from "react-toastify";
 
 const Contact = () => {
@@ -10,30 +10,74 @@ const Contact = () => {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const handleMessage = async (e) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const submitTimeoutRef = useRef(null);
+
+  // Debounced form submission to prevent rapid clicks
+  const handleMessage = useCallback(async (e) => {
     e.preventDefault();
-    setLoading(true);
-    await axios
-      .post(
-        "https://codeawakening.onrender.com/api/v1/message/send",
-        { senderName, subject, message },
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
-        }
-      )
-      .then((res) => {
-        toast.success(res.data.message);
-        setSenderName("");
-        setSubject("");
-        setMessage("");
+    
+    // Prevent multiple submissions
+    if (loading || isSubmitted) return;
+    
+    // Clear any existing timeout
+    if (submitTimeoutRef.current) {
+      clearTimeout(submitTimeoutRef.current);
+    }
+
+    // Optimistic update - show success immediately
+    setIsSubmitted(true);
+    toast.success("Message sent successfully!");
+    
+    // Clear form immediately for better UX
+    const originalData = { senderName, subject, message };
+    setSenderName("");
+    setSubject("");
+    setMessage("");
+
+    // Debounce the actual API call
+    submitTimeoutRef.current = setTimeout(async () => {
+      setLoading(true);
+      
+      try {
+        await axios.post(
+          "https://codeawakening.onrender.com/api/v1/message/send",
+          originalData,
+          {
+            withCredentials: true,
+            headers: { 
+              "Content-Type": "application/json",
+              // Add timeout to prevent hanging requests
+              timeout: 10000
+            },
+          }
+        );
+        
+        // Success already shown optimistically
         setLoading(false);
-      })
-      .catch((error) => {
-        toast.error(error.response.data.message);
+        setIsSubmitted(false);
+        
+      } catch (error) {
+        // Revert optimistic update on error
+        setSenderName(originalData.senderName);
+        setSubject(originalData.subject);
+        setMessage(originalData.message);
+        setIsSubmitted(false);
         setLoading(false);
-      });
-  };
+        
+        toast.error(error.response?.data?.message || "Failed to send message. Please try again.");
+      }
+    }, 100); // Small delay to prevent accidental double-clicks
+  }, [senderName, subject, message, loading, isSubmitted]);
+
+  // Auto-reset submission state after a delay
+  React.useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => setIsSubmitted(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted]);
+
   return (
     <>
       <div className="overflow-x-hidden container">
@@ -51,6 +95,7 @@ const Contact = () => {
               value={senderName}
               onChange={(e) => setSenderName(e.target.value)}
               placeholder="Your Name"
+              disabled={loading}
             />
           </div>
           <div className="flex flex-col gap-2 px-1.5">
@@ -59,6 +104,7 @@ const Contact = () => {
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
               placeholder="Subject"
+              disabled={loading}
             />
           </div>
           <div className="flex flex-col gap-2 px-1.5">
@@ -67,11 +113,25 @@ const Contact = () => {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Your Message"
+              disabled={loading}
             />
           </div>
           <div className="flex justify-end">
-            {!loading ? (
-              <Button className="w-full sm:w-52">SEND MESSAGE</Button>
+            {!loading && !isSubmitted ? (
+              <Button 
+                className="w-full sm:w-52"
+                type="submit"
+                disabled={!senderName || !subject || !message}
+              >
+                SEND MESSAGE
+              </Button>
+            ) : isSubmitted ? (
+              <Button 
+                className="w-full sm:w-52 bg-green-600 hover:bg-green-700"
+                disabled
+              >
+                ✓ Message Sent!
+              </Button>
             ) : (
               <button
                 disabled
