@@ -167,7 +167,7 @@ const Skills = () => {
             return (
               <div 
                 key={key}
-                className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+                className={`${isVisible ? 'animate-fade-in flex flex-col items-center justify-center' : 'opacity-0'}`}
                 style={{ animationDelay: `${categoryIndex * 0.2}s` }}
               >
                 {/* Category header */}
