@@ -28,7 +28,7 @@ function App() {
     dispatch(getAllTimeline());
     dispatch(getAllMessages());
     dispatch(getAllProjects());
-  }, []);
+  }, [dispatch]);
   return (
     <Router>
       <Routes>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -82,7 +82,7 @@ const UpdateProject = () => {
       dispatch(resetProjectSlice());
       dispatch(getAllProjects());
     }
-  }, [id, message, error]);
+  }, [id, message, error, dispatch]);
 
   const handleUpdateProject = (e) => {
     e.preventDefault();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,7 @@ const Profile = () => {
     if (message) {
       toast.success(message);
     }
-  }, [dispatch, isAuthenticated, error, message]);
+  }, [dispatch, isAuthenticated, error, message, isUpdated]);
   return (
     <>
       <div className="w-full h-full">

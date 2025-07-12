@@ -45,7 +45,7 @@ const ManageTimeline = () => {
       dispatch(resetTimelineSlice());
       dispatch(getAllTimeline());
     }
-  }, [dispatch, loading, error]);
+  }, [dispatch, loading, error, message]);
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">

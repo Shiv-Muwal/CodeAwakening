@@ -33,7 +33,7 @@ const ForgotPassword = () => {
     if (message !== null) {
       toast.success(message);
     }
-  }, [dispatch, isAuthenticated, error, loading]);
+  }, [dispatch, isAuthenticated, error, message, navigateTo]);
 
   return (
     <div className="w-full lg:grid lg:min-h-[100vh] lg:grid-cols-2 xl:min-h-[100vh]">

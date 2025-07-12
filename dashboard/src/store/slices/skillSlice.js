@@ -10,7 +10,7 @@ const skillSlice = createSlice({
     message: null,
   },
   reducers: {
-    getAllSkillsRequest(state, action) {
+    getAllSkillsRequest(state) {
       state.skills = [];
       state.error = null;
       state.loading = true;
@@ -24,7 +24,7 @@ const skillSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
-    addNewSkillRequest(state, action) {
+    addNewSkillRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -39,7 +39,7 @@ const skillSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    deleteSkillRequest(state, action) {
+    deleteSkillRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -54,7 +54,7 @@ const skillSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    updateSkillRequest(state, action) {
+    updateSkillRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
