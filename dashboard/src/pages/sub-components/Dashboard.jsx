@@ -19,11 +19,11 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { clearAllSkillErrors } from "@/store/slices/skillSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import SpecialLoadingButton from "./SpecialLoadingButton";
+
 import { clearAllTimelineErrors } from "@/store/slices/timelineSlice";
 import { clearAllProjectErrors } from "@/store/slices/projectSlice";
 const Dashboard = () => {
@@ -31,9 +31,7 @@ const Dashboard = () => {
   const gotoMangeSkills = () => {
     navigateTo("/manage/skills");
   };
-  const gotoMangeTimeline = () => {
-    navigateTo("/manage/timeline");
-  };
+
   const gotoMangeProjects = () => {
     navigateTo("/manage/projects");
   };
@@ -41,15 +39,10 @@ const Dashboard = () => {
   const { user } = useSelector((state) => state.user);
   const {
     skills,
-    loading: skillLoading,
     error: skillError,
-    message: skillMessage,
   } = useSelector((state) => state.skill);
   const {
-    timeline,
-    loading: timelineLoading,
     error: timelineError,
-    message: timelineMessage,
   } = useSelector((state) => state.timeline);
   const { projects, error: projectError } = useSelector(
     (state) => state.project
@@ -71,12 +64,9 @@ const Dashboard = () => {
     }
   }, [
     dispatch,
-    skillLoading,
     skillError,
-    skillMessage,
+    projectError,
     timelineError,
-    timelineLoading,
-    timelineMessage,
   ]);
 
   return (

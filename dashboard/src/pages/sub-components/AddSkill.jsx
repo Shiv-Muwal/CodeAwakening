@@ -4,7 +4,7 @@ import {
   getAllSkills,
   resetSkillSlice,
 } from "@/store/slices/skillSlice";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,7 @@ const AddSkill = () => {
 
   const { loading, message, error } = useSelector((state) => state.skill);
   const dispatch = useDispatch();
-  const handleAddNewSkill = (e) => {
+  const handleAddNewSkill = () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("proficiency", proficiency);
@@ -46,7 +46,7 @@ const AddSkill = () => {
       dispatch(resetSkillSlice());
       dispatch(getAllSkills());
     }
-  }, [dispatch, loading, error]);
+  }, [dispatch, loading, error, message]);
 
   return (
     <>
@@ -105,7 +105,6 @@ const AddSkill = () => {
                       {svgPreview ? (
                         <img
                           className="mx-auto h-12 w-12 text-gray-300"
-                          viewBox="0 0 24 24"
                           src={svgPreview ? `${svgPreview}` : "/docHolder.jpg"}
                         />
                       ) : (

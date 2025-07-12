@@ -10,7 +10,7 @@ const messageSlice = createSlice({
     message: null,
   },
   reducers: {
-    getAllMessagesRequest(state, action) {
+    getAllMessagesRequest(state) {
       state.messages = [];
       state.error = null;
       state.loading = true;
@@ -24,7 +24,7 @@ const messageSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
-    deleteMessageRequest(state, action) {
+    deleteMessageRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;

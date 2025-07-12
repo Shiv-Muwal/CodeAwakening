@@ -61,7 +61,7 @@ const ManageSkills = () => {
       dispatch(resetSkillSlice());
       dispatch(getAllSkills());
     }
-  }, [dispatch, loading, error]);
+  }, [dispatch, loading, error, message]);
 
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">

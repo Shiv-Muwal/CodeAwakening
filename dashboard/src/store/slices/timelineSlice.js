@@ -10,7 +10,7 @@ const timelineSlice = createSlice({
     message: null,
   },
   reducers: {
-    getAllTimelineRequest(state, action) {
+    getAllTimelineRequest(state) {
       state.timeline = [];
       state.error = null;
       state.loading = true;
@@ -24,7 +24,7 @@ const timelineSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
-    addNewTimelineRequest(state, action) {
+    addNewTimelineRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
@@ -39,7 +39,7 @@ const timelineSlice = createSlice({
       state.loading = false;
       state.message = null;
     },
-    deleteTimelineRequest(state, action) {
+    deleteTimelineRequest(state) {
       state.loading = true;
       state.error = null;
       state.message = null;
