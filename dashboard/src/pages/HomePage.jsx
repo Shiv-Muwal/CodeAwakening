@@ -23,7 +23,6 @@ import { useEffect, useState } from "react";
 import Dashboard from "./sub-components/Dashboard";
 import AddSkill from "./sub-components/AddSkill";
 import AddProject from "./sub-components/AddProject";
-import AddSoftwareApplications from "./sub-components/AddSoftwareApplications";
 import Account from "./sub-components/Account";
 import { useDispatch, useSelector } from "react-redux";
 import { logout, clearAllUserErrors } from "@/store/slices/userSlice";
@@ -111,25 +110,6 @@ const HomePage = () => {
                 </Link>
               </TooltipTrigger>
               <TooltipContent side="right">Add Skill</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link
-                  className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-                    active === "Add Uses"
-                      ? "text-accent-foreground bg-accent"
-                      : "text-muted-foreground"
-                  }  transition-colors hover:text-foreground md:h-8 md:w-8`}
-                  onClick={() => setActive("Add Uses")}
-                >
-                  <LayoutGrid className="h-5 w-5" />
-                  <span className="sr-only">Add Apps</span>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent side="right">Add Apps</TooltipContent>
             </Tooltip>
           </TooltipProvider>
           <TooltipProvider>
@@ -330,8 +310,6 @@ const HomePage = () => {
             return <AddProject />;
           case "Add Skill":
             return <AddSkill />;
-          case "Add Uses":
-            return <AddSoftwareApplications />;
           case "Add Timeline":
             return <AddTimeline />;
           case "Messages":

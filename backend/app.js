@@ -9,7 +9,6 @@ import userRouter from "./routes/userRoutes.js";
 import timelineRouter from "./routes/timelineRoutes.js";
 import messageRouter from "./routes/messageRoutes.js";
 import skillRouter from "./routes/skillRoutes.js";
-import softwareApplicationRouter from "./routes/softwareApplicationRoutes.js";
 import projectRouter from "./routes/projectRoutes.js";
 
 const app = express();
@@ -53,7 +52,6 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/timeline", timelineRouter);
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/skill", skillRouter);
-app.use("/api/v1/softwareapplication", softwareApplicationRouter);
 app.use("/api/v1/project", projectRouter);
 
 dbConnection();

@@ -13,7 +13,6 @@ import { getUser } from "./store/slices/userSlice";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import { getAllSkills } from "./store/slices/skillSlice";
-import { getAllSoftwareApplications } from "./store/slices/softwareApplicationSlice";
 import { getAllTimeline } from "./store/slices/timelineSlice";
 import { getAllMessages } from "./store/slices/messageSlice";
 import ManageTimeline from "./pages/ManageTimeline";
@@ -26,7 +25,6 @@ function App() {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getAllSkills());
-    dispatch(getAllSoftwareApplications());
     dispatch(getAllTimeline());
     dispatch(getAllMessages());
     dispatch(getAllProjects());
