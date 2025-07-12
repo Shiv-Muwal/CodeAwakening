@@ -61,19 +61,19 @@ const Skills = () => {
 
     skills.forEach(skill => {
       const title = skill.title.toLowerCase();
-      if (title.includes('react') || title.includes('vue') || title.includes('angular') || 
-          title.includes('html') || title.includes('css') || title.includes('javascript') ||
-          title.includes('typescript') || title.includes('tailwind') || title.includes('next')) {
+      if (title.includes('react') || title.includes('vue') || title.includes('angular') ||
+        title.includes('html') || title.includes('css') || title.includes('javascript') ||
+        title.includes('typescript') || title.includes('tailwind') || title.includes('next')) {
         categories.frontend.push(skill);
       } else if (title.includes('node') || title.includes('python') || title.includes('express') ||
-                 title.includes('django') || title.includes('flask') || title.includes('php') ||
-                 title.includes('java') || title.includes('spring')) {
+        title.includes('django') || title.includes('flask') || title.includes('php') ||
+        title.includes('java') || title.includes('spring')) {
         categories.backend.push(skill);
       } else if (title.includes('mongo') || title.includes('mysql') || title.includes('postgres') ||
-                 title.includes('redis') || title.includes('firebase')) {
+        title.includes('redis') || title.includes('firebase')) {
         categories.database.push(skill);
       } else if (title.includes('git') || title.includes('docker') || title.includes('aws') ||
-                 title.includes('vercel') || title.includes('figma') || title.includes('vscode')) {
+        title.includes('vercel') || title.includes('figma') || title.includes('vscode')) {
         categories.tools.push(skill);
       } else {
         categories.other.push(skill);
@@ -161,11 +161,11 @@ const Skills = () => {
         <div className="space-y-16">
           {Object.entries(categoryConfig).map(([key, config], categoryIndex) => {
             const categorySkills = categorizedSkills[key];
-            
+
             if (categorySkills.length === 0) return null;
 
             return (
-              <div 
+              <div
                 key={key}
                 className={`${isVisible ? 'animate-fade-in flex flex-col items-center justify-center' : 'opacity-0'}`}
                 style={{ animationDelay: `${categoryIndex * 0.2}s` }}
@@ -180,7 +180,7 @@ const Skills = () => {
                     <p className="text-sm sm:text-base text-muted-foreground">{config.description}</p>
                   </div>
                 </div>
-                
+
                 {/* Skills grid */}
                 <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
                   {categorySkills.map((skill, index) => (
@@ -189,31 +189,31 @@ const Skills = () => {
                       className={`group modern-card p-4 sm:p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
                       style={{ animationDelay: `${categoryIndex * 0.2 + index * 0.1}s` }}
                     >
-                  <div className="relative mb-3 sm:mb-4">
-                    <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300"></div>
-                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-white dark:bg-gray-800 rounded-2xl p-2 sm:p-3 shadow-lg group-hover:shadow-glow transition-all duration-300">
-                      <img
-                        src={skill.svg && skill.svg.url}
-                        alt={skill.title}
-                        className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                      />
+                      <div className="relative mb-3 sm:mb-4">
+                        <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300"></div>
+                        <div className="relative w-12 h-12 sm:w-16 sm:h-16 mx-auto bg-white dark:bg-gray-800 rounded-2xl p-2 sm:p-3 shadow-lg group-hover:shadow-glow transition-all duration-300">
+                          <img
+                            src={skill.svg && skill.svg.url}
+                            alt={skill.title}
+                            className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                          />
+                        </div>
+                      </div>
+                      <h4 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-gradient transition-colors duration-300">
+                        {skill.title}
+                      </h4>
+                      {/* Hover effect overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-gradient-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                     </div>
-                  </div>
-                  <h4 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-gradient transition-colors duration-300">
-                    {skill.title}
-                  </h4>
-                  {/* Hover effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gradient-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
             );
           })}
 
           {/* All other skills if any */}
           {categorizedSkills.other.length > 0 && (
-            <div 
+            <div
               className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
               style={{ animationDelay: '0.8s' }}
             >
