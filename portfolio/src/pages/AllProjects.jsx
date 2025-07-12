@@ -229,7 +229,7 @@ const AllProjects = () => {
                       const technologiesList = project.technologies.split(", ");
                       return (
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {technologiesList.slice(0, 4).map((tech, techIndex) => (
+                          {technologiesList.slice(0, 5).map((tech, techIndex) => (
                             <span 
                               key={techIndex}
                               className="bg-gradient-to-r from-gradient-primary/10 to-gradient-secondary/10 text-gradient-primary text-xs px-2 py-1 rounded-md font-medium border border-gradient-primary/20"
@@ -237,9 +237,9 @@ const AllProjects = () => {
                               {tech}
                             </span>
                           ))}
-                          {technologiesList.length > 4 && (
+                          {technologiesList.length > 5 && (
                             <span className="text-muted-foreground text-xs px-2 py-1">
-                              +{technologiesList.length - 4} more
+                              +{technologiesList.length - 5} more
                             </span>
                           )}
                         </div>
