@@ -182,7 +182,7 @@ const Skills = () => {
                 </div>
 
                 {/* Skills grid */}
-                <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                <div className="flex flex-wrap items-center justify-center w-full gap-4 sm:gap-6">
                   {categorySkills.map((skill, index) => (
                     <div
                       key={skill._id}
@@ -214,7 +214,7 @@ const Skills = () => {
           {/* All other skills if any */}
           {categorizedSkills.other.length > 0 && (
             <div
-              className={`${isVisible ? 'animate-fade-in flex flex-col items-center justify-center' : 'opacity-0'}`}
+              className={`${isVisible ? 'animate-fade-in flex flex-col items-center w-full justify-center' : 'opacity-0'}`}
               style={{ animationDelay: '0.8s' }}
             >
               <div className="flex items-center gap-4 mb-8">
@@ -231,7 +231,7 @@ const Skills = () => {
                 {categorizedSkills.other.map((skill, index) => (
                   <div
                     key={skill._id}
-                    className={`group modern-card p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                    className={`group flex flex-col items-center justify-center max-w-[172px] w-full modern-card p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
                     style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                   >
                     <div className="relative mb-4">
