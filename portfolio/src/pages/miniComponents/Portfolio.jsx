@@ -2,14 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Folder, ExternalLink, Github, Calendar, ArrowRight, Eye } from "lucide-react";
 
 const Portfolio = () => {
-  const [viewAll, setViewAll] = useState(false);
   const [projects, setProjects] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,7 +52,7 @@ const Portfolio = () => {
     getMyProjects();
   }, []);
 
-  const displayedProjects = viewAll ? projects : projects.slice(0, 6);
+  const displayedProjects = projects.slice(0, 6);
 
   if (loading) {
     return (
@@ -213,15 +213,15 @@ const Portfolio = () => {
               ))}
             </div>
 
-            {/* Show more/less button */}
+            {/* Show more projects button */}
             {projects.length > 6 && (
               <div className={`text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
                 <Button 
-                  onClick={() => setViewAll(!viewAll)}
+                  onClick={() => navigate('/projects')}
                   className="group bg-gradient-to-r from-gradient-primary to-gradient-secondary hover:from-gradient-secondary hover:to-gradient-accent text-white border-0 px-8 py-3 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg"
                 >
-                  <span className="mr-2">{viewAll ? 'Show Less' : 'Show More Projects'}</span>
-                  <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${viewAll ? 'rotate-180' : 'group-hover:translate-x-1'}`} />
+                  <span className="mr-2">View All Projects</span>
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Button>
               </div>
             )}

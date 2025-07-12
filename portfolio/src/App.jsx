@@ -4,6 +4,7 @@ import { ModeToggle } from "./components/mode-toggle";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ProjectView from "./pages/ProjectView";
+import AllProjects from "./pages/AllProjects";
 import Footer from "./pages/miniComponents/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectView />} />
+          <Route path="/projects" element={<AllProjects />} />
         </Routes>
         <Footer />
         <ToastContainer position="bottom-right" theme="dark" />
