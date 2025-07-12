@@ -1,8 +1,8 @@
 // src/helper.js
 export const navLinks = [
-  { name: "Home", href: "#features" },
+  { name: "Home", href: "#Home" },
   { name: "About", href: "#About" },
   { name: "Skills", href: "#Skills" },
-  { name: "Projects", href: "#MyProjecct" },
-  { name: "Contact Me", href: "#education" },
+  { name: "Projects", href: "#MyProject" },
+  { name: "Contact Me", href: "#Contact" },
 ];

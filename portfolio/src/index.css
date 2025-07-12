@@ -232,7 +232,7 @@
     
     /* Typography improvements */
     .heading-primary {
-        @apply text-4xl md:text-6xl lg:text-7xl font-bold;
+        @apply text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
         background-size: 200% 200%;
         background-clip: text;

@@ -114,7 +114,7 @@ const Skills = () => {
 
   if (loading) {
     return (
-      <div id="skills-section" className="py-8 md:py-12 lg:py-16">
+      <div id="skills-section Skills" className="py-8 md:py-12 lg:py-16">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="heading-secondary text-gradient">Skills</h2>

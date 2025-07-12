@@ -120,7 +120,7 @@ const Hero = () => {
   const cleanDiscordURL = cleanURL(discordURL);
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-hero-pattern">
+    <div id="Home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-hero-pattern">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-full opacity-10 blur-3xl animate-float"></div>
@@ -148,9 +148,9 @@ const Hero = () => {
         </div>
 
         {/* Main heading */}
-        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <h3 className="block text-4xl mb-3">Hey, I'm</h3>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary font-Libre">
+        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary">
           Shivdayal Singh
           </h1>
         </div>

@@ -36,7 +36,7 @@ const Contact = () => {
   };
   return (
     <>
-      <div className="overflow-x-hidden container">
+      <div className="overflow-x-hidden container Contact">
           <h1
             className="text-[1.85rem] sm:text-[2.75rem] md:text-[3rem] 
             lg:text-[3rem] leading-[56px] md:leading-[67px] lg:leading-[90px] 
