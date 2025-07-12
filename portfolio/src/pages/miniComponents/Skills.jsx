@@ -114,7 +114,7 @@ const Skills = () => {
 
   if (loading) {
     return (
-      <div id="skills-section" className="section-padding">
+      <div id="skills-section" className="py-8 md:py-12 lg:py-16">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="heading-secondary text-gradient">Skills</h2>
@@ -134,7 +134,7 @@ const Skills = () => {
   }
 
   return (
-    <div id="skills-section" className="section-padding relative overflow-hidden">
+    <div id="skills-section" className="py-8 md:py-12 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-10 w-32 h-32 bg-gradient-to-r from-gradient-blue to-gradient-cyan rounded-full opacity-10 blur-2xl"></div>

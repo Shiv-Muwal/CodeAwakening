@@ -230,11 +230,6 @@
         mask-composite: xor;
     }
     
-    /* Section spacing */
-    .section-padding {
-        @apply py-8 md:py-12 lg:py-16;
-    }
-    
     /* Typography improvements */
     .heading-primary {
         @apply text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight;

@@ -8,7 +8,6 @@ import {
   Download,
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
@@ -140,7 +139,7 @@ const Hero = () => {
 
       <div className="w-full container relative z-10 text-center lg:text-left">
         {/* Status indicator */}
-        <div className="flex items-center pt-16 gap-3 mb-8 justify-center lg:justify-start animate-fade-in">
+        <div className="flex items-center pt-16 gap-3 mb-4 justify-center lg:justify-start animate-fade-in">
           <span className="bg-gradient-to-r from-green-400 to-emerald-500 rounded-full h-3 w-3 animate-pulse shadow-glow"></span>
           <p className="text-lg font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
             Available for opportunities
@@ -150,8 +149,8 @@ const Hero = () => {
 
         {/* Main heading */}
         <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h3 className="block text-4xl">Hey, I'm</h3>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight heading-primary">
+            <h3 className="block text-4xl mb-3">Hey, I'm</h3>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary">
           Shivdayal Singh
           </h1>
         </div>

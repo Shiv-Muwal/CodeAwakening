@@ -34,7 +34,7 @@ const About = () => {
   ];
 
   return (
-    <div id="about-section" className="section-padding relative overflow-hidden">
+    <div id="about-section" className="py-8 md:py-12 lg:py-16 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-full opacity-5 blur-3xl"></div>
@@ -43,7 +43,7 @@ const About = () => {
 
       <div className="container relative z-10">
         {/* Section header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+        <div className={`text-center mb-14 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-3 mb-6">
             <User className="w-8 h-8 text-gradient-primary" />
             <span className="text-lg font-medium text-muted-foreground uppercase tracking-wider">
@@ -143,7 +143,7 @@ const About = () => {
               </p>
               
               {/* Stats or highlights */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                 <div className="text-center">
                   <div className="text-4xl font-bold text-gradient mb-2">100%</div>
                   <div className="text-muted-foreground">Commitment</div>
@@ -158,22 +158,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Decorative elements */}
-        <div className="flex justify-center mt-16">
-          <div className="flex gap-2">
-            {[...Array(5)].map((_, i) => (
-              <div 
-                key={i}
-                className="w-2 h-2 rounded-full bg-gradient-to-r from-gradient-primary to-gradient-secondary opacity-60"
-                style={{ 
-                  animationDelay: `${i * 0.2}s`,
-                  animation: 'pulse 2s infinite'
-                }}
-              ></div>
-            ))}
           </div>
         </div>
       </div>
