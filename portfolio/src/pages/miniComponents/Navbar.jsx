@@ -36,7 +36,7 @@ const Navbar = () => {
                 : 'bg-transparent'
         }`}>
             <div className="container mx-auto">
-                <div className="flex justify-between items-center py-4 px-6 max-lg:px-4 max-lg:py-3">
+                <div className="flex justify-between items-center py-4 max-lg:px-4 max-lg:py-3">
                     {/* Logo */}
                     <div className="relative group">
                         <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300"></div>

@@ -140,7 +140,7 @@ const Hero = () => {
 
       <div className="w-full container relative z-10 text-center lg:text-left">
         {/* Status indicator */}
-        <div className="flex items-center gap-3 mb-8 justify-center lg:justify-start animate-fade-in">
+        <div className="flex items-center pt-16 gap-3 mb-8 justify-center lg:justify-start animate-fade-in">
           <span className="bg-gradient-to-r from-green-400 to-emerald-500 rounded-full h-3 w-3 animate-pulse shadow-glow"></span>
           <p className="text-lg font-medium bg-gradient-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
             Available for opportunities
@@ -150,14 +150,14 @@ const Hero = () => {
 
         {/* Main heading */}
         <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight">
-            <span className="block">Hey, I'm</span>
-            <span className="block heading-primary">Shivdayal Singh</span>
+            <h3 className="block text-4xl">Hey, I'm</h3>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 leading-tight heading-primary">
+          Shivdayal Singh
           </h1>
         </div>
 
         {/* Typewriter effect */}
-        <div className="mb-12 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-muted-foreground tracking-wider">
             <Typewriter
               words={[
@@ -176,7 +176,7 @@ const Hero = () => {
         </div>
 
         {/* Social links */}
-        <div className="flex justify-center lg:justify-start mb-12 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+        <div className="flex justify-center lg:justify-start mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <div className="modern-card p-4 flex gap-6 items-center hover-lift">
             {cleanInstagramURL && (
               <a 
@@ -215,7 +215,7 @@ const Hero = () => {
         </div>
 
         {/* Action buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-12 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+        <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-8 animate-fade-in" style={{ animationDelay: '0.8s' }}>
           {cleanGithubURL && (
             <a href={cleanGithubURL} target="_blank" rel="noopener noreferrer">
               <Button className="group relative overflow-hidden bg-gradient-to-r from-gradient-primary to-gradient-secondary hover:from-gradient-secondary hover:to-gradient-accent text-white border-0 px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg w-full sm:w-auto">
@@ -244,7 +244,7 @@ const Hero = () => {
         </div>
 
         {/* Decorative gradient line */}
-        <div className="mt-16 animate-fade-in" style={{ animationDelay: '1.2s' }}>
+        <div className="mt-12 animate-fade-in" style={{ animationDelay: '1.2s' }}>
           <div className="h-1 w-full bg-gradient-to-r from-transparent via-gradient-primary to-transparent rounded-full opacity-50"></div>
         </div>
       </div>
