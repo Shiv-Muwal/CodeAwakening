@@ -119,7 +119,6 @@ const Skills = () => {
           <div className="text-center mb-16">
             <h2 className="heading-secondary text-gradient">Skills</h2>
           </div>
-          // Update the loading state grid
           <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
             {[...Array(12)].map((_, i) => (
               <div key={i} className="modern-card p-6 animate-pulse">
@@ -172,7 +171,6 @@ const Skills = () => {
                 style={{ animationDelay: `${categoryIndex * 0.2}s` }}
               >
                 {/* Category header */}
-                // Update the category header
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
                   <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${config.color} p-3 shadow-glow`}>
                     <config.icon className="w-full h-full text-white" />

@@ -24,7 +24,7 @@ module.exports = {
     },
     extend: {
       fontFamily:{
-        'Libre':"'Libre Caslon Text', serif",
+        'Libre':['Libre Caslon Text', 'serif'],
         'inter': ['Inter', 'sans-serif'],
         'jetbrains': ['JetBrains Mono', 'monospace'],
       },

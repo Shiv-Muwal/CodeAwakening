@@ -10,12 +10,12 @@ import Navbar from "./miniComponents/Navbar";
 const Home = () => {
   return (
     <article className="min-h-screen font-inter overflow-hidden">
-      <Navbar/>
+      <Navbar />
       <Hero />
       <About />
+      <Timeline />
       <Skills />
       <Portfolio />
-      <Timeline />
       <Contact />
     </article>
   );

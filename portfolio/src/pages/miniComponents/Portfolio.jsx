@@ -240,20 +240,6 @@ const Portfolio = () => {
             </div>
           </div>
         )}
-
-        {/* Bottom call to action */}
-        <div className={`mt-8 text-center ${isVisible ? 'animate-fade-in' : 'opacity-0'}`} style={{ animationDelay: '0.8s' }}>
-          <div className="modern-card p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gradient mb-4">Interested in Working Together?</h3>
-            <p className="text-muted-foreground mb-6">
-              I'm always excited to take on new challenges and bring innovative ideas to life.
-            </p>
-            <Button className="bg-gradient-to-r from-gradient-accent to-gradient-pink hover:from-gradient-pink hover:to-gradient-accent text-white border-0 px-8 py-3 rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-glow">
-              <span className="mr-2">Get In Touch</span>
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -150,7 +150,7 @@ const Hero = () => {
         {/* Main heading */}
         <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <h3 className="block text-4xl mb-3">Hey, I'm</h3>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary font-Libre">
           Shivdayal Singh
           </h1>
         </div>
