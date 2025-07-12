@@ -182,11 +182,11 @@ const Skills = () => {
                 </div>
 
                 {/* Skills grid */}
-                <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
                   {categorySkills.map((skill, index) => (
                     <div
                       key={skill._id}
-                      className={`group modern-card p-4 sm:p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+                      className={`group modern-card flex flex-col items-center justify-center max-w-[172px] w-full p-4 sm:p-6 hover-lift text-center ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
                       style={{ animationDelay: `${categoryIndex * 0.2 + index * 0.1}s` }}
                     >
                       <div className="relative mb-3 sm:mb-4">
@@ -214,7 +214,7 @@ const Skills = () => {
           {/* All other skills if any */}
           {categorizedSkills.other.length > 0 && (
             <div
-              className={`${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+              className={`${isVisible ? 'animate-fade-in flex flex-col items-center justify-center' : 'opacity-0'}`}
               style={{ animationDelay: '0.8s' }}
             >
               <div className="flex items-center gap-4 mb-8">
