@@ -6,29 +6,11 @@ import { ModeToggle } from '@/components/mode-toggle';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState('Home');
 
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY;
             setIsScrolled(scrollPosition > 50);
-            
-            // Active section detection
-            const sections = navLinks.map(link => link.href.replace('#', ''));
-            const navbarHeight = 80;
-            
-            for (let i = sections.length - 1; i >= 0; i--) {
-                const section = document.getElementById(sections[i]);
-                if (section) {
-                    const sectionTop = section.offsetTop - navbarHeight;
-                    const sectionBottom = sectionTop + section.offsetHeight;
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                        setActiveSection(navLinks[i].name);
-                        break;
-                    }
-                }
-            }
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -46,28 +28,6 @@ const Navbar = () => {
             document.body.classList.remove("max-lg:overflow-hidden");
         };
     }, [isMenuOpen]);
-
-    // Smooth scroll function
-    const handleSmoothScroll = (e, href) => {
-        e.preventDefault();
-        const targetId = href.replace('#', '');
-        const targetElement = document.getElementById(targetId);
-        
-        if (targetElement) {
-            // Close mobile menu if open
-            setIsMenuOpen(false);
-            
-            // Calculate offset for fixed navbar
-            const navbarHeight = 80; // Approximate navbar height
-            const targetPosition = targetElement.offsetTop - navbarHeight;
-            
-            // Smooth scroll to target
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    };
 
     return (
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -106,30 +66,19 @@ const Navbar = () => {
                                         animationDelay: isMenuOpen ? `${index * 0.1}s` : '0s',
                                         animationFillMode: 'forwards'
                                     }}
+                                    onClick={() => setIsMenuOpen(false)}
                                 >
                                     <a
                                         href={link.href}
-                                        onClick={(e) => handleSmoothScroll(e, link.href)}
-                                        className={`relative font-medium text-base lg:text-sm xl:text-base transition-all duration-300 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gradient-primary focus-visible:ring-offset-2 rounded-sm px-3 py-2 max-lg:text-xl max-lg:py-3 cursor-pointer ${
-                                            activeSection === link.name 
-                                                ? 'text-gradient-primary' 
-                                                : 'hover:text-gradient-primary'
-                                        }`}
+                                        className="relative font-medium text-base lg:text-sm xl:text-base transition-all duration-300 ease-out hover:text-gradient-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gradient-primary focus-visible:ring-offset-2 rounded-sm px-3 py-2 max-lg:text-xl max-lg:py-3"
                                     >
                                         <span className="relative z-10">{link.name}</span>
-                                        
-                                        {/* Active state background */}
-                                        {activeSection === link.name && (
-                                            <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary/20 to-gradient-secondary/20 rounded-lg opacity-100 transition-all duration-300 scale-100"></div>
-                                        )}
                                         
                                         {/* Hover background */}
                                         <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary/10 to-gradient-secondary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100"></div>
                                         
                                         {/* Bottom border effect */}
-                                        <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-gradient-to-r from-gradient-primary to-gradient-secondary transition-all duration-300 ${
-                                            activeSection === link.name ? 'w-full' : 'w-0 group-hover:w-full'
-                                        }`}></div>
+                                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-gradient-primary to-gradient-secondary group-hover:w-full transition-all duration-300"></div>
                                         
                                         {/* Glow effect */}
                                         <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-lg opacity-0 group-hover:opacity-20 blur-lg transition-all duration-300"></div>
