@@ -103,6 +103,8 @@ const Hero = () => {
     discordURL,
     aboutMe = "Welcome to my portfolio!",
     resume = null,
+    email,
+    phone
   } = userData;
 
   // Clean URL helper function
@@ -118,6 +120,8 @@ const Hero = () => {
   const cleanLinkedInURL = cleanURL(linkedInURL);
   const cleanGithubURL = cleanURL(githubURL);
   const cleanDiscordURL = cleanURL(discordURL);
+  const cleanEmail = cleanURL(email);
+  const cleanPhone = cleanURL(phone);
 
   return (
     <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-hero-pattern">
