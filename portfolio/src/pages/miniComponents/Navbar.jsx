@@ -41,7 +41,7 @@ const Navbar = () => {
                     <div className="relative group">
                         <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary rounded-xl opacity-0 group-hover:opacity-20 blur-xl transition-all duration-300"></div>
                         <div className="relative transform group-hover:scale-105 transition-transform duration-300">
-                            <Logo className="w-full h-8 text-gradient-primary" />
+                            <Logo className="w-full h-8 text-gradient-primary cursor-pointer" />
                         </div>
                     </div>
 

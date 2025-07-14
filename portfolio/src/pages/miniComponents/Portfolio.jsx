@@ -83,7 +83,7 @@ const Portfolio = () => {
         <div className="absolute bottom-1/4 left-20 w-60 h-60 bg-gradient-to-r from-gradient-blue to-gradient-cyan rounded-full opacity-5 blur-3xl"></div>
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10" id="MyProject">
         {/* Section header */}
         <div className={`text-center mb-8 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-3 mb-4">

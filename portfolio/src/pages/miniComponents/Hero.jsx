@@ -137,7 +137,7 @@ const Hero = () => {
         }}
       ></div>
 
-      <div className="w-full container relative z-10 text-center lg:text-left">
+      <div className="w-full container relative z-10 text-center lg:text-left" id="Home">
         {/* Status indicator */}
         <div className="flex items-center pt-16 gap-3 mb-4 justify-center lg:justify-start animate-fade-in">
           <span className="bg-gradient-to-r from-green-400 to-emerald-500 rounded-full h-3 w-3 animate-pulse shadow-glow"></span>

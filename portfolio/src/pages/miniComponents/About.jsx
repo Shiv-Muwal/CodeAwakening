@@ -41,7 +41,7 @@ const About = () => {
         <div className="absolute bottom-20 left-20 w-60 h-60 bg-gradient-to-r from-gradient-accent to-gradient-pink rounded-full opacity-5 blur-3xl"></div>
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10" id="About">
         {/* Section header */}
         <div className={`text-center mb-14 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-3 mb-6">

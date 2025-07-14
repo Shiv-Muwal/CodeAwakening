@@ -140,7 +140,7 @@ const Skills = () => {
         <div className="absolute bottom-1/4 right-10 w-40 h-40 bg-gradient-to-r from-gradient-accent to-gradient-pink rounded-full opacity-10 blur-2xl"></div>
       </div>
 
-      <div className="container relative z-10">
+      <div className="container relative z-10" id="Skills">
         {/* Section header */}
         <div className={`text-center mb-8 sm:mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
