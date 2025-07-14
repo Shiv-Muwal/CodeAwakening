@@ -11,6 +11,7 @@ import React, { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { ACTION_BUTTON_LINKS, SOCIAL_ICON_LINKS } from "../common/Helper";
 
 const Hero = () => {
   const [user, setUser] = useState(null);
@@ -53,7 +54,7 @@ const Hero = () => {
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
         {/* Animated background */}
         <div className="absolute inset-0 bg-gradient-to-br from-gradient-primary via-gradient-secondary to-gradient-accent opacity-10"></div>
-        
+
         <div className="w-full container relative z-10">
           <div className="flex items-center gap-3 mb-6 animate-pulse">
             <div className="bg-gradient-to-r from-green-400 to-blue-500 rounded-full h-3 w-3 animate-bounce"></div>
@@ -73,7 +74,7 @@ const Hero = () => {
     return (
       <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-yellow-500/10"></div>
-        
+
         <div className="w-full container relative z-10 text-center">
           <div className="modern-card p-8 max-w-md mx-auto">
             <div className="flex items-center gap-3 mb-4 justify-center">
@@ -133,7 +134,7 @@ const Hero = () => {
       </div>
 
       {/* Mouse follower effect */}
-      <div 
+      <div
         className="absolute w-96 h-96 rounded-full bg-gradient-to-r from-gradient-primary to-gradient-secondary opacity-5 blur-3xl pointer-events-none transition-all duration-1000 ease-out"
         style={{
           left: mousePosition.x - 192,
@@ -152,10 +153,10 @@ const Hero = () => {
         </div>
 
         {/* Main heading */}
-            <h3 className="block text-4xl mb-3">Hey, I'm</h3>
+        <h3 className="block text-4xl mb-3">Hey, I'm</h3>
         <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary">
-          Shivdayal Singh
+            Shivdayal Singh
           </h1>
         </div>
 
@@ -165,7 +166,7 @@ const Hero = () => {
             <Typewriter
               words={[
                 "FULLSTACK DEVELOPER",
-                "FRONTEND SPECIALIST", 
+                "FRONTEND SPECIALIST",
                 "DEVELOPMENT ENTHUSIAST",
                 "DEDICATED CODER"
               ]}
@@ -181,63 +182,39 @@ const Hero = () => {
         {/* Social links */}
         <div className="flex justify-center lg:justify-start mb-8 animate-fade-in" style={{ animationDelay: '0.6s' }}>
           <div className="modern-card p-4 flex gap-6 items-center hover-lift">
-            {cleanInstagramURL && (
-              <a 
-                href={cleanInstagramURL} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                <Instagram className="relative text-pink-500 w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow" />
-              </a>
-            )}
-            {cleanLinkedInURL && (
-              <a 
-                href={cleanLinkedInURL} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                <Linkedin className="relative text-sky-500 w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow" />
-              </a>
-            )}
-            {cleanDiscordURL && (
-              <a 
-                href={cleanDiscordURL} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl"></div>
-                <Send className="relative text-indigo-500 w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow" />
-              </a>
-            )}
+            {SOCIAL_ICON_LINKS.map(({ id, icon: Icon, urlKey, gradient, color }) => {
+              const url = user?.[urlKey];
+              if (!url || url === "undefined" || url === "null") return null;
+
+              return (
+                <a key={id} href={url} target="_blank" rel="noopener noreferrer" className="group relative">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${gradient} rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-xl`}></div>
+                  <Icon className={`relative ${color} w-8 h-8 transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-glow`} />
+                </a>
+              );
+            })}
           </div>
         </div>
 
         {/* Action buttons */}
         <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start mb-8 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-          {cleanGithubURL && (
-            <a href={cleanGithubURL} target="_blank" rel="noopener noreferrer">
-              <Button className="group relative overflow-hidden bg-gradient-to-r from-gradient-primary to-gradient-secondary hover:from-gradient-secondary hover:to-gradient-accent text-white border-0 px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg w-full sm:w-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Github className="w-5 h-5 mr-3 relative z-10" />
-                <span className="relative z-10">View GitHub</span>
-              </Button>
-            </a>
-          )}
-          {resume?.url && (
-            <a href={resume.url} target="_blank" rel="noopener noreferrer">
-              <Button className="group relative overflow-hidden bg-transparent border-2 border-gradient-primary hover:bg-gradient-to-r hover:from-gradient-primary hover:to-gradient-secondary hover:border-transparent text-gradient-primary hover:text-white px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg w-full sm:w-auto">
-                <div className="absolute inset-0 bg-gradient-to-r from-gradient-primary to-gradient-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Download className="w-5 h-5 mr-3 relative z-10" />
-                <span className="relative z-10">Download Resume</span>
-              </Button>
-            </a>
-          )}
+          {ACTION_BUTTON_LINKS.map(({ id, icon: Icon, label, urlKey, buttonClass, isResume }) => {
+            const rawLink = user?.[urlKey];
+            const url = isResume ? rawLink?.url : rawLink;
+            if (!url || url === "undefined" || url === "null") return null;
+
+            return (
+              <a key={id} href={url} target="_blank" rel="noopener noreferrer">
+                <Button className={`group relative overflow-hidden ${buttonClass} px-8 py-4 rounded-2xl font-medium text-lg transition-all duration-300 hover:scale-105 hover:shadow-modern-lg w-full sm:w-auto`}>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Icon className="w-5 h-5 mr-3 relative z-10" />
+                  <span className="relative z-10">{label}</span>
+                </Button>
+              </a>
+            );
+          })}
         </div>
+
 
         {/* About description */}
         <div className="max-w-2xl mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: '1s' }}>
