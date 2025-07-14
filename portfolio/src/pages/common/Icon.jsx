@@ -63,3 +63,16 @@ export const BackToTop = () => {
           </svg>
   )
 }
+
+export const Discord = (props) => (
+  <svg
+    viewBox="0 0 256 256"
+    width="24"
+    height="24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M216.856339,16.5966031 ... (rest of the path)" />
+  </svg>
+);

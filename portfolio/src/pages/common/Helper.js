@@ -1,4 +1,5 @@
-import { Instagram, Linkedin, Github, Send, Download } from "lucide-react";
+import { Instagram, Linkedin, Github, Download } from "lucide-react";
+import { Discord } from "../common/Icon";
 
 export const navLinks = [
   { name: "Home", href: "#Home" },
@@ -28,7 +29,7 @@ export const SOCIAL_LINKS = (user) => [
   },
   {
     url: user?.discordURL,
-    Icon: Send,
+    Icon: Discord,
     label: "Discord",
     color: "text-indigo-500",
   },
@@ -50,7 +51,7 @@ export const SOCIAL_ICON_LINKS = [
   },
   {
     id: "discord",
-    icon: Send,
+    icon: Discord,
     urlKey: "discordURL",
     gradient: "from-indigo-500 to-purple-600",
     color: "text-indigo-500",
