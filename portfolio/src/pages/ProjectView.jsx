@@ -87,7 +87,7 @@ const ProjectView = () => {
                   </ul>
                 </div>
                 <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Technologies:</p>
+                  <p className="text-2xl mb-2">Technologies :</p>
                   <ul>
                     {technologiesList.map((item, index) => (
                       <li key={index} className="items-center gap-1 inline">{item} 
@@ -98,16 +98,16 @@ const ProjectView = () => {
                 </div>
              <div className="flex items-center max-w-96 w-full flex-wrap gap-2">
                  <div className="w-full sm:col-span-4 flex">
-                  <p className="text-2xl mb-2">Stack : </p>
+                  <p className="text-2xl max-sm:mb-2">Stack :&nbsp;</p>
                   <p>{stack}</p>
                 </div>
                 <div className="w-full sm:col-span-4 flex">
-                  <p className="text-2xl mb-2">Deployed : </p>
+                  <p className="text-2xl max-sm:mb-2">Deployed :&nbsp;</p>
                   <p>{deployed}</p>
                 </div>
              </div>
                 <div className="w-full sm:col-span-4 flex flex-wrap items-center">
-                  <p className="text-2xl mb-2">Github Repository Link : </p>
+                  <p className="text-2xl max-sm:mb-2">Github Repository Link :&nbsp;</p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
@@ -117,7 +117,7 @@ const ProjectView = () => {
                   </Link>
                 </div>
                 <div className="w-full sm:col-span-4 flex flex-wrap items-center">
-                  <p className="text-2xl mb-2">Project Link : </p>
+                  <p className="text-2xl max-sm:mb-2">Project Link :&nbsp;</p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
