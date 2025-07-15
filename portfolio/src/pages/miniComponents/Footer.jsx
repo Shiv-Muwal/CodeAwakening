@@ -62,7 +62,7 @@ const Footer = () => {
   const instagramURL = cleanURL(user?.instagramURL);
   const discordURL = cleanURL(user?.discordURL);
   const phone = user?.phone || '+91 96713 55104';
-  const location = user?.location || 'San Francisco, CA';
+  const location = user?.location || '256, Muwal Colony, Siwani';
 
   return (
     <footer className="bg-background border-t border-border">
@@ -107,7 +107,10 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center space-x-2">
                 <Mail />
-                <a href={`mailto:${email}`} className="hover:text-foreground transition-colors">
+                <a
+                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
+                  target="_blank"
+                  rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                   {email}
                 </a>
               </div>

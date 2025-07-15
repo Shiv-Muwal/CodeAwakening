@@ -268,8 +268,8 @@ const Skills = () => {
                 <div className="text-xs sm:text-sm text-muted-foreground">Technologies</div>
               </div>
               <div className="text-center p-2 sm:p-0">
-                <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">5+</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">1+</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Year Experience</div>
               </div>
               <div className="text-center p-2 sm:p-0">
                 <div className="text-2xl sm:text-3xl font-bold text-gradient mb-1">∞</div>
