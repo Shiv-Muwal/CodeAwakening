@@ -97,11 +97,11 @@ const ProjectView = () => {
                   </ul>
                 </div>
              <div className="flex items-center max-w-96 w-full flex-wrap gap-2">
-                 <div className="w-full sm:col-span-4 flex">
+                 <div className="w-full sm:col-span-4 flex items-center">
                   <p className="text-2xl max-sm:mb-2">Stack :&nbsp;</p>
                   <p>{stack}</p>
                 </div>
-                <div className="w-full sm:col-span-4 flex">
+                <div className="w-full sm:col-span-4 flex items-center">
                   <p className="text-2xl max-sm:mb-2">Deployed :&nbsp;</p>
                   <p>{deployed}</p>
                 </div>
