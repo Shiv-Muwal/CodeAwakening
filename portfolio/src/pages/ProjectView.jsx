@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
+import { Logo } from "./common/Icon";
 
 const ProjectView = () => {
   const [title, setTitle] = useState("");
@@ -58,7 +59,8 @@ const ProjectView = () => {
         <div className="w-[100%] px-5 md:w-[1000px] pb-5">
           <div className="space-y-12">
             <div className="border-b border-gray-900/10 pb-12">
-              <div className="flex justify-end">
+              <div className="flex justify-between items-center">
+                <Logo className="w-8 h-8" />
                 <Button onClick={handleReturnToPortfolio}>
                   Return to Portfolio
                 </Button>
@@ -78,7 +80,7 @@ const ProjectView = () => {
                 </div>
                 <div className="w-full sm:col-span-4">
                   <p className="text-2xl mb-2">Description:</p>
-                  <ul className="list-disc">
+                  <ul>
                     {descriptionList.map((item, index) => (
                       <li key={index}>{item}</li>
                     ))}
@@ -86,22 +88,26 @@ const ProjectView = () => {
                 </div>
                 <div className="w-full sm:col-span-4">
                   <p className="text-2xl mb-2">Technologies:</p>
-                  <ul className="list-disc">
+                  <ul>
                     {technologiesList.map((item, index) => (
-                      <li key={index}>{item}</li>
+                      <li key={index} className="flex items-center gap-1">{item} 
+                       {index !== technologiesList.length - 1 && ', '}
+                      </li>
                     ))}
                   </ul>
                 </div>
-                <div className="w-full sm:col-span-4">
+             <div className="flex items-center max-w-96 w-full flex-wrap gap-2">
+                 <div className="w-full sm:col-span-4 flex">
                   <p className="text-2xl mb-2">Stack:</p>
                   <p>{stack}</p>
                 </div>
-                <div className="w-full sm:col-span-4">
+                <div className="w-full sm:col-span-4 flex">
                   <p className="text-2xl mb-2">Deployed:</p>
                   <p>{deployed}</p>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Github Repository Link:</p>
+             </div>
+                <div className="w-full sm:col-span-4 flex flex-wrap">
+                  <p className="text-2xl mb-2">Github Repository Link :</p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
@@ -110,8 +116,8 @@ const ProjectView = () => {
                     {gitRepoLink}
                   </Link>
                 </div>
-                <div className="w-full sm:col-span-4">
-                  <p className="text-2xl mb-2">Project Link:</p>
+                <div className="w-full sm:col-span-4 flex flex-wrap">
+                  <p className="text-2xl mb-2">Project Link :</p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
