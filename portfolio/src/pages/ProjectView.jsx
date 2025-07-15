@@ -90,7 +90,7 @@ const ProjectView = () => {
                   <p className="text-2xl mb-2">Technologies:</p>
                   <ul>
                     {technologiesList.map((item, index) => (
-                      <li key={index} className="flex items-center gap-1">{item} 
+                      <li key={index} className="items-center gap-1 inline">{item} 
                        {index !== technologiesList.length - 1 && ', '}
                       </li>
                     ))}
@@ -98,16 +98,16 @@ const ProjectView = () => {
                 </div>
              <div className="flex items-center max-w-96 w-full flex-wrap gap-2">
                  <div className="w-full sm:col-span-4 flex">
-                  <p className="text-2xl mb-2">Stack:</p>
+                  <p className="text-2xl mb-2">Stack : </p>
                   <p>{stack}</p>
                 </div>
                 <div className="w-full sm:col-span-4 flex">
-                  <p className="text-2xl mb-2">Deployed:</p>
+                  <p className="text-2xl mb-2">Deployed : </p>
                   <p>{deployed}</p>
                 </div>
              </div>
-                <div className="w-full sm:col-span-4 flex flex-wrap">
-                  <p className="text-2xl mb-2">Github Repository Link :</p>
+                <div className="w-full sm:col-span-4 flex flex-wrap items-center">
+                  <p className="text-2xl mb-2">Github Repository Link : </p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
@@ -116,8 +116,8 @@ const ProjectView = () => {
                     {gitRepoLink}
                   </Link>
                 </div>
-                <div className="w-full sm:col-span-4 flex flex-wrap">
-                  <p className="text-2xl mb-2">Project Link :</p>
+                <div className="w-full sm:col-span-4 flex flex-wrap items-center">
+                  <p className="text-2xl mb-2">Project Link : </p>
                   <Link
                     className="text-sky-700"
                     target="_blank"
