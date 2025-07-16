@@ -81,15 +81,13 @@ const Contact = () => {
     <div id="Contact">
       <div className="overflow-x-hidden container pb-12">
           <h1
-            className="text-[1.85rem] sm:text-[2.75rem] md:text-[3rem] 
-            lg:text-[3rem] leading-[56px] md:leading-[67px] lg:leading-[90px] 
-            tracking-[15px] text-center"
+            className="text-gradient heading-secondary text-center"
           >
             CONTACT ME
           </h1>
         <form onSubmit={handleMessage} className="flex flex-col gap-6">
           <div className="flex flex-col gap-2 px-1.5">
-            <Label className="text-xl">Your Name</Label>
+            <Label className="text-xl text-muted-foreground">Your Name</Label>
             <Input
               value={senderName}
               onChange={(e) => setSenderName(e.target.value)}
@@ -98,7 +96,7 @@ const Contact = () => {
             />
           </div>
           <div className="flex flex-col gap-2 px-1.5">
-            <Label className="text-xl">Subject</Label>
+            <Label className="text-xl text-muted-foreground">Subject</Label>
             <Input
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
@@ -107,7 +105,7 @@ const Contact = () => {
             />
           </div>
           <div className="flex flex-col gap-2 px-1.5">
-            <Label className="text-xl">Message</Label>
+            <Label className="text-xl text-muted-foreground">Message</Label>
             <Input
               value={message}
               onChange={(e) => setMessage(e.target.value)}

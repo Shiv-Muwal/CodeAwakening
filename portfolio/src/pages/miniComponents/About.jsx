@@ -50,8 +50,8 @@ const About = () => {
               Get to know me
             </span>
           </div>
-          <h2 className="heading-secondary mb-6">
-            <span className="text-gradient">About Me</span>
+          <h2 className="heading-secondary mb-6 font-jetbrains">
+            <span className="text-gradient font-Libre">About Me</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Allow me to introduce myself and share my journey in technology and beyond.

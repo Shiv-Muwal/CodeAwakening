@@ -154,8 +154,8 @@ const Hero = () => {
 
         {/* Main heading */}
         <h3 className="block text-4xl mb-3">Hey, I'm</h3>
-        <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 heading-primary">
+        <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <h1 className="text-5xl md:text-7xl pb-8 lg:text-8xl font-bold mb-4 heading-primary">
             Shivdayal Singh
           </h1>
         </div>
